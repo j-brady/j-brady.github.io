@@ -1,0 +1,32 @@
+#+STARTUP: overview
+#+TITLE: Jacob P. Brady
+#+SETUPFILE: org-template/style.org
+#+OPTIONS: num:nil toc:nil
+* Work
+I am a Principal Scientist at the Novartis Institutes for Biomedical Research in Cambridge MA. My lab specializes in fragment based drug discovery (FBDD) and biophysical characterization of  biomolecules and their interactions using nuclear magnetic resonance (NMR). We integrate our NMR work with other biochemical  and biophysical methods such as TR-FRET and SPR to guide drug discovery teams and drive medicinal chemistry efforts.
+* Publications
+You can find them on
+[[https://pubmed.ncbi.nlm.nih.gov/?term=%28%28Brady%2C+Jacob+P%5BAuthor%5D%29+OR+%28brady%2C+jacob%5BAuthor%5D+AND+matthews+sj%5BAuthor%5D%29&sort=date][PubMed]]
+* Education
+| Institution             |    Period | Position                   |
+|-------------------------+-----------+----------------------------|
+| University of Toronto   | 2015-2019 | Post-doc (Lewis Kay's Lab) |
+| University of Oxford    | 2010-2015 | PhD (Jason Schnell's Lab)  |
+| Imperial College London | 2007-2010 | BSc. Biochemistry          |
+* Interests
+** Music
+In my free time I enjoy making music! I play violin, viola, guitar enjoy singing.
+I currently play with the [[https:https://www.kendallsquareorchestra.org/][Kendall Square Orchestra]], a wonderful community of amateur musicians from the local area.
+** Coding
+I use the Python Programming Language on a regular basis for my work. I also enjoy contributing to open source projects and believe that open and free software is the way to go. Below are some of  my favourite python libraries. I recommend checking them out if you don't know them.
+| Library     | Description                                                     |
+|-------------+-----------------------------------------------------------------|
+| pandas      | dataframes!                                                     |
+| matplotlib  | wonderful plotting library                                      |
+| scipy/numpy | essentials                                                      |
+| lmfit       | convenient set of functions/wrappers for fitting models to data |
+| pandera     | data validation for dataframes                                  |
+| pydantic    | data validation                                                 |
+| nmrglue     | fantastic library for dealing with NMR data                     |
+* Contact
+Email (see below) is the best way to contact me.
