@@ -6,7 +6,7 @@
 I am a Principal Scientist at the Novartis Institutes for Biomedical Research in Cambridge MA. My lab specializes in fragment based drug discovery (FBDD) and biophysical characterization of  biomolecules and their interactions using nuclear magnetic resonance (NMR). We integrate our NMR work with other biochemical  and biophysical methods such as TR-FRET and SPR to guide drug discovery teams and drive medicinal chemistry efforts.
 * Publications
 You can find them on
-[[https://pubmed.ncbi.nlm.nih.gov/?term=%28%28Brady%2C+Jacob+P%5BAuthor%5D%29+OR+%28brady%2C+jacob%5BAuthor%5D+AND+matthews+sj%5BAuthor%5D%29&sort=date][PubMed]]
+[[https://pubmed.ncbi.nlm.nih.gov/?term=%28Brady%2C+Jacob+P%5BAuthor%5D%29+OR+%28brady%2C+jacob%5BAuthor%5D+AND+matthews+sj%5BAuthor%5D%29&sort=date][PubMed]]
 * Education
 | Institution             |    Period | Position                   |
 |-------------------------+-----------+----------------------------|
