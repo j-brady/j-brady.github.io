@@ -1,5 +1,7 @@
 #+TITLE: Sitemap
 
 - [[file:index.org][Jacob P. Brady]]
+- [[file:phd.org][My PhD Research]]
+- [[file:postdoc.org][My Post-doc Research]]
 - org-template
   - [[file:org-template/style.org][style]]
