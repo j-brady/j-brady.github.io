@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2021-12-23 Thu 14:40 -->
+<!-- 2021-12-23 Thu 14:48 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How I built this website</title>
@@ -27,9 +27,9 @@ relative
 I built this site using Emacs and Org-Mode. The literate programming capabilities built into Org-Mode with Org-Babel were particularly useful for evaluating and rendering the Python source code blocks. The source code for the web site is also available from my <a href="https://github.com/j-brady/j-brady.github.io">GitHub</a> repo. I have laid out some of the important details for putting the page together below and all source files were rendered using Org-mode's <code>#+INCLUDE:</code> tag (<a href="https://orgmode.org/manual/Include-Files.html">see docs</a>) ensuring that they are up-to-date.
 </p>
 
-<div id="outline-container-org534a177" class="outline-2">
-<h2 id="org534a177">Org-Mode</h2>
-<div class="outline-text-2" id="text-org534a177">
+<div id="outline-container-org18ee594" class="outline-2">
+<h2 id="org18ee594">Org-Mode</h2>
+<div class="outline-text-2" id="text-org18ee594">
 <p>
 To avoid rendering large blocks of source code and cluttering the pages I implemented a "hacky" solution for collapsible source code blocks using a combination of inline HTML, CSS and JavaScript. This is not ideal but is the best that I could manage without expending too much time.
 </p>
@@ -103,9 +103,9 @@ In the case where I want the source blocks to be visible by default  (this page)
 
 
 
-<div id="outline-container-org5b49a85" class="outline-2">
-<h2 id="org5b49a85">Emacs-lisp</h2>
-<div class="outline-text-2" id="text-org5b49a85">
+<div id="outline-container-orgf6f1e90" class="outline-2">
+<h2 id="orgf6f1e90">Emacs-lisp</h2>
+<div class="outline-text-2" id="text-orgf6f1e90">
 <p>
 The Emacs-lisp code used to publish the web page
 </p>
@@ -157,9 +157,9 @@ The Emacs-lisp code used to publish the web page
 </div>
 </div>
 
-<div id="outline-container-org89e7202" class="outline-3">
-<h3 id="org89e7202">Setting relative paths</h3>
-<div class="outline-text-3" id="text-org89e7202">
+<div id="outline-container-org1887ab5" class="outline-3">
+<h3 id="org1887ab5">Setting relative paths</h3>
+<div class="outline-text-3" id="text-org1887ab5">
 <p>
 In order for links to work properly on a server they should be relative. By default Org-mode's <code>org-link-file-path-type</code> is set to <code>'adaptive</code> which will convert paths like <code>../blog/filename.org</code> to absolute paths (not what we want). Therefore, I set this variable to <code>'relative</code>.
 </p>
@@ -172,9 +172,9 @@ In order for links to work properly on a server they should be relative. By defa
 </div>
 </div>
 
-<div id="outline-container-orgd630b7b" class="outline-2">
-<h2 id="orgd630b7b">Makefile</h2>
-<div class="outline-text-2" id="text-orgd630b7b">
+<div id="outline-container-org2ffb9da" class="outline-2">
+<h2 id="org2ffb9da">Makefile</h2>
+<div class="outline-text-2" id="text-org2ffb9da">
 <p>
 Make is a very useful tool! Thanks to John Gosset of introducing it to me!
 </p>
@@ -205,9 +205,9 @@ clean:
 </div>
 </div>
 
-<div id="outline-container-org8a85e8e" class="outline-2">
-<h2 id="org8a85e8e">CSS</h2>
-<div class="outline-text-2" id="text-org8a85e8e">
+<div id="outline-container-orgd2dc13c" class="outline-2">
+<h2 id="orgd2dc13c">CSS</h2>
+<div class="outline-text-2" id="text-orgd2dc13c">
 <p>
 The custom CSS code used to style the page is included below. For the collapsible code blocks I used this example from the <a href="https://www.w3schools.com/howto/howto_js_collapsible.asp">W3 Schools</a> website.
 </p>
@@ -258,22 +258,22 @@ The custom CSS code used to style the page is included below. For the collapsibl
 </div>
 </div>
 
-<div id="outline-container-orgc847508" class="outline-2">
-<h2 id="orgc847508">Todo</h2>
-<div class="outline-text-2" id="text-orgc847508">
+<div id="outline-container-org72257ef" class="outline-2">
+<h2 id="org72257ef">Todo</h2>
+<div class="outline-text-2" id="text-org72257ef">
 <ol class="org-ol">
 <li>Improve collapsible source code block implementation
 <ul class="org-ul">
 <li><a href="https://alhassy.github.io/org-special-block-extras/">https://alhassy.github.io/org-special-block-extras/</a> could be a good way to go&#x2026;</li>
 </ul></li>
-<li>Enable syntax highlighting (I think this has something to do with using <code>emacs --batch</code> see <a href="#orgd630b7b">Makefile</a>)</li>
+<li>Enable syntax highlighting (I think this has something to do with using <code>emacs --batch</code> see <a href="#org2ffb9da">Makefile</a>)</li>
 <li>Implement <code>target=_blank</code> for hyperlinks (presently all links open in the current tab)</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-org7574aba" class="outline-2">
-<h2 id="org7574aba">Useful links</h2>
-<div class="outline-text-2" id="text-org7574aba">
+<div id="outline-container-orgf1a97a7" class="outline-2">
+<h2 id="orgf1a97a7">Useful links</h2>
+<div class="outline-text-2" id="text-orgf1a97a7">
 <p>
 The following resources were extremely useful to me:
 </p>
