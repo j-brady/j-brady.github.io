@@ -1,5 +1,8 @@
 (require 'ox-publish)
 
+;;; Code:
+;;;
+(setq org-link-file-path-type 'relative)
 (setq org-publish-project-alist
       '(
         ("j-brady.github.io-content"
