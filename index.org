@@ -24,6 +24,9 @@ You can find them on
 | Imperial College London | 2007-2010 | BSc. Biochemistry          |
 
 -----
+* Blog
+- [[file:blog/how_i_built_this_page.org][How I built this web page]]
+- [[file:blog/reporter_assays.org][Reporter Assays]]
 * Interests
 ** Music
 In my free time I enjoy making music! I play violin, viola, guitar and enjoy singing.

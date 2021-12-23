@@ -23,8 +23,7 @@
         :html-head-include-default-style nil
         ; HTML preamble
         ;:html-preamble
-        :html-postamble "<p class=\"author\">Author: %a (%e)</p><p class=\"creator\">%c</p><div id=\"updated\">Updated: %C</div>"
-        )
+        :html-postamble "<p class=\"author\">Author: %a (%e)</p><p class=\"creator\">%c</p><div id=\"updated\">Updated: %C</div>")
        ("j-brady.github.io-static"
         :base-directory "./"
         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
