@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2021-12-23 Thu 14:48 -->
+<!-- 2021-12-23 Thu 15:00 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How I built this website</title>
@@ -18,18 +18,13 @@
 <div id="content">
 <header>
 <h1 class="title">How I built this website</h1>
-</header><pre class="example">
-relative
-</pre>
-
-
-<p>
+</header><p>
 I built this site using Emacs and Org-Mode. The literate programming capabilities built into Org-Mode with Org-Babel were particularly useful for evaluating and rendering the Python source code blocks. The source code for the web site is also available from my <a href="https://github.com/j-brady/j-brady.github.io">GitHub</a> repo. I have laid out some of the important details for putting the page together below and all source files were rendered using Org-mode's <code>#+INCLUDE:</code> tag (<a href="https://orgmode.org/manual/Include-Files.html">see docs</a>) ensuring that they are up-to-date.
 </p>
 
-<div id="outline-container-org18ee594" class="outline-2">
-<h2 id="org18ee594">Org-Mode</h2>
-<div class="outline-text-2" id="text-org18ee594">
+<div id="outline-container-org901dbd5" class="outline-2">
+<h2 id="org901dbd5">Org-Mode</h2>
+<div class="outline-text-2" id="text-org901dbd5">
 <p>
 To avoid rendering large blocks of source code and cluttering the pages I implemented a "hacky" solution for collapsible source code blocks using a combination of inline HTML, CSS and JavaScript. This is not ideal but is the best that I could manage without expending too much time.
 </p>
@@ -103,9 +98,9 @@ In the case where I want the source blocks to be visible by default  (this page)
 
 
 
-<div id="outline-container-orgf6f1e90" class="outline-2">
-<h2 id="orgf6f1e90">Emacs-lisp</h2>
-<div class="outline-text-2" id="text-orgf6f1e90">
+<div id="outline-container-org06459ef" class="outline-2">
+<h2 id="org06459ef">Emacs-lisp</h2>
+<div class="outline-text-2" id="text-org06459ef">
 <p>
 The Emacs-lisp code used to publish the web page
 </p>
@@ -157,11 +152,11 @@ The Emacs-lisp code used to publish the web page
 </div>
 </div>
 
-<div id="outline-container-org1887ab5" class="outline-3">
-<h3 id="org1887ab5">Setting relative paths</h3>
-<div class="outline-text-3" id="text-org1887ab5">
+<div id="outline-container-org9ae01fa" class="outline-3">
+<h3 id="org9ae01fa">Setting relative paths</h3>
+<div class="outline-text-3" id="text-org9ae01fa">
 <p>
-In order for links to work properly on a server they should be relative. By default Org-mode's <code>org-link-file-path-type</code> is set to <code>'adaptive</code> which will convert paths like <code>../blog/filename.org</code> to absolute paths (not what we want). Therefore, I set this variable to <code>'relative</code>.
+In order for links to work properly on a server they should be relative. By default Org-mode's <code>org-link-file-path-type</code> is set to <code>'adaptive</code> which will convert paths like <code>../blog/filename.org</code> to absolute paths (not what we want). Therefore, I set this variable to <code>'relative</code>. I also added set this in <code>publish.el</code>&#x2026; not sure if that is necessary though.
 </p>
 
 <div class="org-src-container">
@@ -172,9 +167,9 @@ In order for links to work properly on a server they should be relative. By defa
 </div>
 </div>
 
-<div id="outline-container-org2ffb9da" class="outline-2">
-<h2 id="org2ffb9da">Makefile</h2>
-<div class="outline-text-2" id="text-org2ffb9da">
+<div id="outline-container-org2a4960b" class="outline-2">
+<h2 id="org2a4960b">Makefile</h2>
+<div class="outline-text-2" id="text-org2a4960b">
 <p>
 Make is a very useful tool! Thanks to John Gosset of introducing it to me!
 </p>
@@ -205,9 +200,9 @@ clean:
 </div>
 </div>
 
-<div id="outline-container-orgd2dc13c" class="outline-2">
-<h2 id="orgd2dc13c">CSS</h2>
-<div class="outline-text-2" id="text-orgd2dc13c">
+<div id="outline-container-org3ab680a" class="outline-2">
+<h2 id="org3ab680a">CSS</h2>
+<div class="outline-text-2" id="text-org3ab680a">
 <p>
 The custom CSS code used to style the page is included below. For the collapsible code blocks I used this example from the <a href="https://www.w3schools.com/howto/howto_js_collapsible.asp">W3 Schools</a> website.
 </p>
@@ -258,22 +253,22 @@ The custom CSS code used to style the page is included below. For the collapsibl
 </div>
 </div>
 
-<div id="outline-container-org72257ef" class="outline-2">
-<h2 id="org72257ef">Todo</h2>
-<div class="outline-text-2" id="text-org72257ef">
+<div id="outline-container-orga8d9828" class="outline-2">
+<h2 id="orga8d9828">Todo</h2>
+<div class="outline-text-2" id="text-orga8d9828">
 <ol class="org-ol">
 <li>Improve collapsible source code block implementation
 <ul class="org-ul">
 <li><a href="https://alhassy.github.io/org-special-block-extras/">https://alhassy.github.io/org-special-block-extras/</a> could be a good way to go&#x2026;</li>
 </ul></li>
-<li>Enable syntax highlighting (I think this has something to do with using <code>emacs --batch</code> see <a href="#org2ffb9da">Makefile</a>)</li>
+<li>Enable syntax highlighting (I think this has something to do with using <code>emacs --batch</code> see <a href="#org2a4960b">Makefile</a>)</li>
 <li>Implement <code>target=_blank</code> for hyperlinks (presently all links open in the current tab)</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgf1a97a7" class="outline-2">
-<h2 id="orgf1a97a7">Useful links</h2>
-<div class="outline-text-2" id="text-orgf1a97a7">
+<div id="outline-container-org5dca699" class="outline-2">
+<h2 id="org5dca699">Useful links</h2>
+<div class="outline-text-2" id="text-org5dca699">
 <p>
 The following resources were extremely useful to me:
 </p>
@@ -309,7 +304,7 @@ The following resources were extremely useful to me:
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Jacob P Brady (<a href="mailto:jacob.brady@protonmail.com">jacob.brady@protonmail.com</a>)</p><p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.4.4)</p><div id="updated">Updated: 2021-12-23 Thu 14:35</div>
+<p class="author">Author: Jacob P Brady (<a href="mailto:jacob.brady@protonmail.com">jacob.brady@protonmail.com</a>)</p><p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.4.4)</p><div id="updated">Updated: 2021-12-23 Thu 14:57</div>
 </div>
 </body>
 </html>

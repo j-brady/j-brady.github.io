@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2021-12-23 Thu 14:48 -->
+<!-- 2021-12-23 Thu 15:00 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NMR Reporter Assays</title>
@@ -85,11 +85,11 @@ A good reporter molecule should have the following qualities:
 <p>
 A key advantage of NMR based reporter assays over other techniques such as fluorescence polarisation (FP) is that a sensitive assay can be achieved at much lower bound ligand fractions.
 For example, a typical FP assay requires an \(f_0\) of \(0.5-0.8\) whereas an NMR assay can be highly sensitive with \(f_0\) values as low as 0.003.
-This means that the measurable range of \(K_i\) values by NMR reporter assays is around 2 orders of magnitude wider (see <a href="#org5f89260">IC50</a>).
+This means that the measurable range of \(K_i\) values by NMR reporter assays is around 2 orders of magnitude wider (see <a href="#org07b3067">IC50</a>).
 </p>
 
 <p>
-Below is a schematic showing the key experimental read-outs of a reporter assay (see <a href="#orge9c99d3">Assay quality metrics</a> for more details). On the left is the reporter only sample for which a sharp intense reporter signal is observed.
+Below is a schematic showing the key experimental read-outs of a reporter assay (see <a href="#org1b76cd9">Assay quality metrics</a> for more details). On the left is the reporter only sample for which a sharp intense reporter signal is observed.
 Upon addition of protein to the sample the reporter signal is greatly attenuated  (centre) due to the reporter binding to a specific site on the protein.
 Addition of a competitor molecule (right) leads to a recovery of signal intensity due competition for binding to the same site on the protein and hence a reduction in the bound fraction of reporter.
 </p>
@@ -185,19 +185,19 @@ return fname
 </div>
 
 
-<figure id="org1d709d0">
+<figure id="orgbc0dd0b">
 <img src="../static/contrast.png" alt="contrast.png">
 
 </figure>
 
 <hr>
-<div id="outline-container-orga264cc1" class="outline-2">
-<h2 id="orga264cc1">Theory</h2>
-<div class="outline-text-2" id="text-orga264cc1">
+<div id="outline-container-org5b31b43" class="outline-2">
+<h2 id="org5b31b43">Theory</h2>
+<div class="outline-text-2" id="text-org5b31b43">
 </div>
-<div id="outline-container-orgb9cf147" class="outline-3">
-<h3 id="orgb9cf147">Simple binding model</h3>
-<div class="outline-text-3" id="text-orgb9cf147">
+<div id="outline-container-org4b9685f" class="outline-3">
+<h3 id="org4b9685f">Simple binding model</h3>
+<div class="outline-text-3" id="text-org4b9685f">
 <p>
 In the absence of a competitor the fraction of bound reporter is calculated using the following logic.
 </p>
@@ -307,16 +307,16 @@ return fname
 </div>
 
 
-<figure id="org3636709">
+<figure id="org5095e8f">
 <img src="../static/fraction_bound.png" alt="fraction_bound.png">
 
 </figure>
 </div>
 </div>
 
-<div id="outline-container-org5f89260" class="outline-3">
-<h3 id="org5f89260">IC50</h3>
-<div class="outline-text-3" id="text-org5f89260">
+<div id="outline-container-org07b3067" class="outline-3">
+<h3 id="org07b3067">IC50</h3>
+<div class="outline-text-3" id="text-org07b3067">
 <p>
 This is defined as the total competitor concentration (i.e. \([I]+[PI]\) or free competitor + bound competitor, resp) required to reduce the fraction of bound reporter ligand by 50% (\(f=f_0/2\)).
 </p>
@@ -382,19 +382,19 @@ return fname
 </div>
 
 
-<figure id="org8c4a867">
+<figure id="orgc95dbfe">
 <img src="../static/ic50.png" alt="ic50.png">
 
 </figure>
 </div>
 </div>
 
-<div id="outline-container-org87efb5d" class="outline-3">
-<h3 id="org87efb5d">Competitive binding model</h3>
-<div class="outline-text-3" id="text-org87efb5d">
+<div id="outline-container-orgf77c0be" class="outline-3">
+<h3 id="orgf77c0be">Competitive binding model</h3>
+<div class="outline-text-3" id="text-orgf77c0be">
 <p>
 An exact mathematical expression for competitive binding was defined by Wang (1994).
-For a simple 1:1 binding systems this involves solving a quadratic expression (see <a href="#orgb9cf147">Simple binding model</a>).
+For a simple 1:1 binding systems this involves solving a quadratic expression (see <a href="#org4b9685f">Simple binding model</a>).
 However, for a competitive binding system a cubic expression must be solved (see <a href="https://en.wikipedia.org/wiki/Cubic_equation">https://en.wikipedia.org/wiki/Cubic_equation</a>).
 </p>
 
@@ -598,16 +598,16 @@ return fname
 </div>
 
 
-<figure id="org2533a11">
+<figure id="org0c91eed">
 <img src="../static/fraction_bound_2.png" alt="fraction_bound_2.png">
 
 </figure>
 </div>
 </div>
 
-<div id="outline-container-orge9c99d3" class="outline-3">
-<h3 id="orge9c99d3">Assay quality metrics</h3>
-<div class="outline-text-3" id="text-orge9c99d3">
+<div id="outline-container-org1b76cd9" class="outline-3">
+<h3 id="org1b76cd9">Assay quality metrics</h3>
+<div class="outline-text-3" id="text-org1b76cd9">
 <p>
 Viriera and Ciulli (2019) have described an assay quality metric, \(C_2\), or contrast which is the fractional decrease in signal intensity in the presence of protein.
 Larger \(C_2\) values are usually preferred as this improves the dynamic range of the assay.
@@ -646,13 +646,13 @@ Calculation of a reasonable \(Z'\) score would require that one includes \(>3\) 
 </div>
 </div>
 
-<div id="outline-container-orgf9a6338" class="outline-2">
-<h2 id="orgf9a6338">Practice</h2>
-<div class="outline-text-2" id="text-orgf9a6338">
+<div id="outline-container-orgc1b14cd" class="outline-2">
+<h2 id="orgc1b14cd">Practice</h2>
+<div class="outline-text-2" id="text-orgc1b14cd">
 </div>
-<div id="outline-container-orgf1b678c" class="outline-3">
-<h3 id="orgf1b678c">\(^1H\) vs \(^{19}F\)</h3>
-<div class="outline-text-3" id="text-orgf1b678c">
+<div id="outline-container-org4e98011" class="outline-3">
+<h3 id="org4e98011">\(^1H\) vs \(^{19}F\)</h3>
+<div class="outline-text-3" id="text-org4e98011">
 <p>
 The fluorine nucleus has advantages over proton for use as a reporter
 </p>
@@ -668,9 +668,9 @@ This means that high \(C_2\)  can be achieved relative to  \(^1H\) at a given co
 </div>
 </div>
 
-<div id="outline-container-orga990d85" class="outline-3">
-<h3 id="orga990d85">Conditions</h3>
-<div class="outline-text-3" id="text-orga990d85">
+<div id="outline-container-orgdc39ef6" class="outline-3">
+<h3 id="orgdc39ef6">Conditions</h3>
+<div class="outline-text-3" id="text-orgdc39ef6">
 <p>
 A good starting point is 1 μM protein and 50 μM reporter. However, there is no substitute for testing a few different protein and reporter concentrations to judge which provides the highest \(C_2\), \(Z'\) and \(\frac{S}{N}\) ratios. Vieira de Castro and Ciulli (2019) demonstrated this very clearly.
 It is also a good idea to test multiple reporters across a range of affinities.
@@ -679,9 +679,9 @@ As was shown by Vieira de Castro and Ciulli (2019) the optimal reporter affinity
 </div>
 </div>
 
-<div id="outline-container-org10b7c4e" class="outline-3">
-<h3 id="org10b7c4e">NMR experiments</h3>
-<div class="outline-text-3" id="text-org10b7c4e">
+<div id="outline-container-org1145072" class="outline-3">
+<h3 id="org1145072">NMR experiments</h3>
+<div class="outline-text-3" id="text-org1145072">
 <ol class="org-ol">
 <li>T2 filtered experiments
 <ul class="org-ul">
@@ -693,9 +693,9 @@ As was shown by Vieira de Castro and Ciulli (2019) the optimal reporter affinity
 </div>
 </div>
 
-<div id="outline-container-org1329e4f" class="outline-2">
-<h2 id="org1329e4f">References</h2>
-<div class="outline-text-2" id="text-org1329e4f">
+<div id="outline-container-orgde28689" class="outline-2">
+<h2 id="orgde28689">References</h2>
+<div class="outline-text-2" id="text-orgde28689">
 <ol class="org-ol">
 <li><a href="https://doi.org/10.1039/c8cc09790a">Spy vs. spy: selecting the best reporter for 19 F NMR competition experiments</a>; Guilherme Vieira de Castro  and  Alessio Ciulli</li>
 <li><a href="https://doi.org/10.1177/108705719900400206">A Simple Statistical Parameter for Use in Evaluation and Validation of High Throughput Screening Assays</a>; JH Zhang, TD Chung, KR Oldenburg</li>
@@ -706,9 +706,9 @@ As was shown by Vieira de Castro and Ciulli (2019) the optimal reporter affinity
 </div>
 </div>
 
-<div id="outline-container-orgd2d7dc8" class="outline-2">
-<h2 id="orgd2d7dc8">Appendix</h2>
-<div class="outline-text-2" id="text-orgd2d7dc8">
+<div id="outline-container-org94fb118" class="outline-2">
+<h2 id="org94fb118">Appendix</h2>
+<div class="outline-text-2" id="text-org94fb118">
 <p>
 The protein concentration required for a given bound fraction of ligand is described by the following relationship:
 </p>
@@ -780,7 +780,7 @@ return p0
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Jacob P Brady (<a href="mailto:jacob.brady@protonmail.com">jacob.brady@protonmail.com</a>)</p><p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.4.4)</p><div id="updated">Updated: 2021-12-23 Thu 14:47</div>
+<p class="author">Author: Jacob P Brady (<a href="mailto:jacob.brady@protonmail.com">jacob.brady@protonmail.com</a>)</p><p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.4.4)</p><div id="updated">Updated: 2021-12-23 Thu 14:55</div>
 </div>
 </body>
 </html>

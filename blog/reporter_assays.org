@@ -6,12 +6,9 @@
 #+HTML_MATHJAX: align: left tagside: left font: Neo-Euler
 #+HTML_MATHJAX: cancel.js noErrors.js
 
-#+begin_src emacs-lisp :exports none
+#+begin_src emacs-lisp :results none :exports none
 (setq org-link-file-path-type 'relative)
 #+end_src
-
-#+RESULTS:
-: relative
 
 ----------
 NMR (Nuclear Magnetic Resonance) is not a high-throughput technique! However, it does have an extremely important role to play in the drug discovery process.
