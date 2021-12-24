@@ -23,3 +23,4 @@ touch:
 	@touch *.org
 	@touch **/*.org
 	@touch **/*.png
+	@touch static/css/*.css

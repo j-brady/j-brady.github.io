@@ -5,6 +5,7 @@
 #+OPTIONS: num:nil toc:nil
 #+HTML_MATHJAX: align: left tagside: left font: Neo-Euler
 #+HTML_MATHJAX: cancel.js noErrors.js
+#+HTML_HEAD: <link rel="stylesheet" href="../static/css/style.css">
 
 #+begin_src emacs-lisp :results none :exports none
 (setq org-link-file-path-type 'relative)

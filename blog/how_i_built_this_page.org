@@ -3,6 +3,7 @@
 #+startup: overview
 #+SETUPFILE: ../org-template/style.org
 #+OPTIONS: num:nil toc:nil
+#+HTML_HEAD: <link rel="stylesheet" href="../static/css/style.css">
 
 I built this site using (Doom) Emacs and Org-Mode. The literate programming capabilities built into Org-Mode with Org-Babel were particularly useful for evaluating and rendering the Python source code blocks. The source code for the web site is also available from my [[https://github.com/j-brady/j-brady.github.io][GitHub]] repo. I have laid out some of the important details for putting the page together below and all source files were rendered using Org-mode's ~#+INCLUDE:~ tag ([[https://orgmode.org/manual/Include-Files.html][see docs]]) ensuring that they are up-to-date.
 
