@@ -6,5 +6,6 @@
 - blog
   - [[file:blog/how_i_built_this_page.org][How I built this website]]
   - [[file:blog/reporter_assays.org][NMR Reporter Assays]]
+  - [[file:blog/sitemap.org][Sitemap]]
 - org-template
   - [[file:org-template/style.org][style]]

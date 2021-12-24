@@ -69,7 +69,6 @@ In the case where I want the source blocks to be visible by default  (this page)
 #+end_src
 
 
-
 * Emacs-lisp
 
 The Emacs-lisp code used to publish the web page

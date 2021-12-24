@@ -17,3 +17,9 @@ clean:
 	@rm -rvf *.elc
 	@rm -rvf html
 	@rm -rvf ~/.org-timestamps/*
+
+touch:
+	@echo "Touching files..."
+	@touch *.org
+	@touch */*.org
+	@touch static/css/*.css

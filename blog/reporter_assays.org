@@ -547,7 +547,7 @@ return p0
 --------------
 
 
-#+HTML_HEAD: <style> .org-src-container {padding: 0 18px; display: none; overflow: hidden; background-color: #f1f1f1;} </style>
+#+HTML_HEAD: <style> .org-src-container {padding: 0 18px; display: none; overflow: hidden;} </style>
 #+begin_export html
 <script>
     var coll = document.getElementsByClassName("collapsible");
