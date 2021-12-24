@@ -7,8 +7,8 @@
 * Work
 I am a Principal Scientist at the Novartis Institutes for Biomedical Research in Cambridge MA. My lab specializes in fragment based drug discovery (FBDD) and biophysical characterization of  biomolecules and their interactions using nuclear magnetic resonance (NMR). We integrate our NMR work with biochemical  and biophysical methods such as TR-FRET and SPR to guide drug discovery teams and drive medicinal chemistry efforts.
 
-- [[file:postdoc.org][Post-doc]]
-- [[file:phd.org][PhD ]]
+- [[file:pages/postdoc.org][Post-doc]]
+- [[file:pages/phd.org][PhD]]
 
 -----
 * Publications

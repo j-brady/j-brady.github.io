@@ -1,11 +1,12 @@
 #+TITLE: Sitemap
 
 - [[file:index.org][Jacob P. Brady]]
-- [[file:phd.org][My PhD Research]]
-- [[file:postdoc.org][My Post-doc Research]]
 - blog
   - [[file:blog/how_i_built_this_page.org][How I built this website]]
   - [[file:blog/reporter_assays.org][NMR Reporter Assays]]
   - [[file:blog/sitemap.org][Sitemap]]
 - org-template
   - [[file:org-template/style.org][style]]
+- pages
+  - [[file:pages/phd.org][My PhD Research]]
+  - [[file:pages/postdoc.org][My Post-doc Research]]
