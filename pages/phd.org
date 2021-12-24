@@ -1,0 +1,52 @@
+#+STARTUP: overview
+#+TITLE: My PhD Research
+#+SETUPFILE: ../org-template/style.org
+#+OPTIONS: num:nil toc:nil
+
+--------------
+
+Tubule formation in the ER was shown by
+[[http://www.ncbi.nlm.nih.gov/pubmed/16469703][Voeltz et al (2006)]] to
+require a class of membrane proteins with unusually short transmembrane
+(TM) regions. These short TMs are thought to both "wedge" and "scaffold"
+ER membranes into their tubular architecture. My work demonstrated that
+a third component, amphipathic helices, is required for tubule formation
+and that this component is likely to be evolutionarily conserved.
+
+#+CAPTION: Assigned TROSY-HSQC spectrum of Yop1p in LMPG:DPPC mixed micelles (q=0.5)
+[[file:../static/fig1.png]]
+
+** The importance of ER tubules
+      :PROPERTIES:
+      :CUSTOM_ID: the-importance-of-er-tubules
+      :END:
+
+The tubular ER comprises a highly dynamic, polygonal network of membrane
+tubules with roles in cell transport, signalling and metabolism. The
+ratio of sheet ER to tubular ER is cell type dependent. Cells
+specialised in metabolism such as hepatocytes contain mainly tubules
+whereas secretory cells (such as pancreatic acinar) contain primarily
+sheet ER. The composition of the ER can change dramatically during the
+cell cycle. For example during transition from interphase into mitosis
+the ER transforms from being primarily tubular to sheet!
+
+#+CAPTION: Conservation of amphipathic character amongst Yop1p and Rtn families
+[[file:../static/fig2.png]]
+
+** ER tubules and disease
+      :PROPERTIES:
+      :CUSTOM_ID: er-tubules-and-disease
+      :END:
+
+Dysfunction of the tubular ER network has been implicated in human
+diseases such as hereditary spastic paraplegia (HSP) and schizophrenia.
+In particular proteins involved in the maintanence and dynamics of ER
+tubules such as Spastin, Atlastin, REEPs and Reticulons have all been
+implicated in HSP.
+
+#+CAPTION: Membrane topology of Yop1p
+[[file:../static/fig3.png]]
+
+--------------
+[[file:../index.org][Back to main page]]
+--------------
