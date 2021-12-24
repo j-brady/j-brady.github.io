@@ -71,10 +71,17 @@ In the case where I want the source blocks to be visible by default  (this page)
 
 * Emacs-lisp
 
-The Emacs-lisp code used to publish the web page
+The Emacs-lisp code used to publish the web page via the make file.
 
 #+HTML: <button type="button" class="collapsible">Toggle code</button>
 #+INCLUDE: "../publish.el" src emacs-lisp
+
+Unfortunately, I had trouble getting the source code syntax highlighting to work with this method so I also added this code (slightly modified) to my literate emacs configuration file, ~config.org~, and publish the website directly from within Emacs by running ~org-publish-all~. The relevant section of my config file is shown below:
+
+
+#+HTML: <button type="button" class="collapsible">Toggle code</button>
+#+INCLUDE: "~/.doom.d/config.org::*Website" :only-contents t
+
 
 ** Setting relative paths
 In order for links to work properly on a server they should be relative. By default Org-mode's ~org-link-file-path-type~ is set to ~'adaptive~ which will convert paths like ~../blog/filename.org~ to absolute paths (not what we want). Therefore, I set this variable to ~'relative~. I also added set this in ~publish.el~... not sure if that is necessary though.

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2021-12-23 Thu 21:00 -->
+<!-- 2021-12-24 Fri 10:04 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>How I built this website</title>
@@ -100,7 +100,7 @@ In the case where I want the source blocks to be visible by default  (this page)
 <h2 id="org2b51653">Emacs-lisp</h2>
 <div class="outline-text-2" id="text-org2b51653">
 <p>
-The Emacs-lisp code used to publish the web page
+The Emacs-lisp code used to publish the web page via the make file.
 </p>
 
 <button type="button" class="collapsible">Toggle code</button>
@@ -146,6 +146,61 @@ The Emacs-lisp code used to publish the web page
 
 (<span style="color: #859900; font-weight: bold; font-style: italic;">provide</span> '<span style="color: #6c71c4; font-weight: bold;">publish</span>)
 <span style="color: #96A7A9; font-style: italic;">;;; </span><span style="color: #96A7A9; font-style: italic;">publish.el</span>
+</pre>
+</div>
+
+<p>
+Unfortunately, I had trouble getting the source code syntax highlighting to work with this method so I also added this code (slightly modified) to my literate emacs configuration file, <code>config.org</code>, and publish the website directly from within Emacs by running <code>org-publish-all</code>. The relevant section of my config file is shown below:
+</p>
+
+<button type="button" class="collapsible">Toggle code</button>
+<p>
+In order for source blocks to be syntax highlighted the website should be build by running <code>org-publish-all</code> inside the <code>j-brady.github.io</code> project.
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold; font-style: italic;">require</span> '<span style="color: #6c71c4; font-weight: bold;">ox-publish</span>)
+
+<span style="color: #96A7A9; font-style: italic;">;;; </span><span style="color: #96A7A9; font-style: italic;">Code:</span>
+<span style="color: #96A7A9; font-style: italic;">;;;</span>
+
+(<span style="color: #859900; font-weight: bold; font-style: italic;">setq</span> org-link-file-path-type 'relative)
+(<span style="color: #859900; font-weight: bold; font-style: italic;">setq</span> org-publish-project-alist
+      '(
+        (<span style="color: #2aa198;">"j-brady.github.io-content"</span>
+        <span style="color: #d33682; font-style: italic;">:base-directory</span> <span style="color: #2aa198;">"~/src/j-brady.github.io/"</span>
+        <span style="color: #d33682; font-style: italic;">:base-extension</span> <span style="color: #2aa198;">"org"</span>
+        <span style="color: #d33682; font-style: italic;">:publishing-directory</span> <span style="color: #2aa198;">"~/src/j-brady.github.io/html/"</span>
+        <span style="color: #d33682; font-style: italic;">:recursive</span> t
+        <span style="color: #d33682; font-style: italic;">:publishing-function</span> org-html-publish-to-html
+        <span style="color: #d33682; font-style: italic;">:headline-levels</span> <span style="color: #6c71c4; font-weight: bold;">4</span>
+        <span style="color: #96A7A9; font-style: italic;">;</span><span style="color: #96A7A9; font-style: italic;">:auto-preamble t</span>
+        <span style="color: #d33682; font-style: italic;">:auto-sitemap</span> t                <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">Generate sitemap.org automagically...</span>
+        <span style="color: #d33682; font-style: italic;">:sitemap-filename</span> <span style="color: #2aa198;">"sitemap.org"</span>  <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">... call it sitemap.org (it's the default)...</span>
+        <span style="color: #d33682; font-style: italic;">:sitemap-title</span> <span style="color: #2aa198;">"Sitemap"</span>         <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">... with title 'Sitemap'.</span>
+        <span style="color: #d33682; font-style: italic;">:email</span> <span style="color: #2aa198;">"jacob.brady@protonmail.com"</span>
+        <span style="color: #d33682; font-style: italic;">:author</span> <span style="color: #2aa198;">"Jacob P Brady"</span>
+        <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">HTML5</span>
+        <span style="color: #d33682; font-style: italic;">:html-doctype</span> <span style="color: #2aa198;">"html5"</span>
+        <span style="color: #d33682; font-style: italic;">:html-html5-fancy</span> t
+        <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">Disable some Org's HTML defaults</span>
+        <span style="color: #d33682; font-style: italic;">:html-head-include-scripts</span> nil
+        <span style="color: #d33682; font-style: italic;">:html-head-include-default-style</span> nil
+        <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">HTML preamble</span>
+        <span style="color: #96A7A9; font-style: italic;">;</span><span style="color: #96A7A9; font-style: italic;">:html-preamble</span>
+        <span style="color: #d33682; font-style: italic;">:html-postamble</span> <span style="color: #2aa198;">"&lt;p class=\"author\"&gt;Author: %a (%e)&lt;/p&gt;&lt;p class=\"creator\"&gt;%c&lt;/p&gt;&lt;div id=\"updated\"&gt;Updated: %C&lt;/div&gt;"</span>)
+       (<span style="color: #2aa198;">"j-brady.github.io-static"</span>
+        <span style="color: #d33682; font-style: italic;">:base-directory</span> <span style="color: #2aa198;">"~/src/j-brady.github.io/"</span>
+        <span style="color: #d33682; font-style: italic;">:base-extension</span> <span style="color: #2aa198;">"css</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">js</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">png</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">jpg</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">gif</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">pdf</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">mp3</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">ogg</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">swf"</span>
+        <span style="color: #d33682; font-style: italic;">:publishing-directory</span> <span style="color: #2aa198;">"~/src/j-brady.github.io/html/"</span>
+        <span style="color: #d33682; font-style: italic;">:recursive</span> t
+        <span style="color: #d33682; font-style: italic;">:publishing-function</span> org-publish-attachment
+        )
+       (<span style="color: #2aa198;">"j-brady.github.io"</span>
+        <span style="color: #d33682; font-style: italic;">:components</span> (<span style="color: #2aa198;">"j-brady.github.io-content"</span> <span style="color: #2aa198;">"j-brady.github.io-static"</span>))))
+
+<span style="color: #96A7A9; font-style: italic;">;;</span><span style="color: #96A7A9; font-style: italic;">(provide 'publish)</span>
+<span style="color: #96A7A9; font-style: italic;">;;; </span><span style="color: #96A7A9; font-style: italic;">publish.el</span>
+
 </pre>
 </div>
 </div>
@@ -318,7 +373,7 @@ The following resources were extremely useful to me:
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Jacob P Brady (<a href="mailto:jacob.brady@protonmail.com">jacob.brady@protonmail.com</a>)</p><p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.6)</p><div id="updated">Updated: 2021-12-23 Thu 21:00</div>
+<p class="author">Author: Jacob P Brady (<a href="mailto:jacob.brady@protonmail.com">jacob.brady@protonmail.com</a>)</p><p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.6)</p><div id="updated">Updated: 2021-12-24 Fri 10:04</div>
 </div>
 </body>
 </html>
