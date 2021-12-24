@@ -1,0 +1,43 @@
+body {
+    font-family: 'Alegreya', serif;
+    margin: 8px;
+}
+.title {
+  text-align: center;
+}
+
+/* Larger than mobile screen */
+@media (min-width: 40.0rem) {
+  body {
+    margin-left: 12rem;
+    margin-right: 12rem;
+    margin-top: 2rem;
+  }
+}
+
+/* Larger than tablet screen */
+@media (min-width: 80.0rem) {
+  body {
+    margin-left: 24rem;
+    margin-right: 24rem;
+    margin-top: 4rem;
+  }
+}
+
+/* Larger than desktop screen */
+@media (min-width: 120.0rem) {
+  body {
+    margin-left: 32rem;
+    margin-right: 32rem;
+    margin-top: 6rem;
+  }
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+/*.src-python {
+  background-color: #ccc;
+}*/

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2021-12-23 Thu 20:09 -->
+<!-- 2021-12-23 Thu 20:20 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>How I built this website</title>
@@ -19,7 +19,7 @@
 <header>
 <h1 class="title">How I built this website</h1>
 </header><p>
-I built this site using Emacs and Org-Mode. The literate programming capabilities built into Org-Mode with Org-Babel were particularly useful for evaluating and rendering the Python source code blocks. The source code for the web site is also available from my <a href="https://github.com/j-brady/j-brady.github.io">GitHub</a> repo. I have laid out some of the important details for putting the page together below and all source files were rendered using Org-mode&rsquo;s <code>#+INCLUDE:</code> tag (<a href="https://orgmode.org/manual/Include-Files.html">see docs</a>) ensuring that they are up-to-date.
+I built this site using (Doom) Emacs and Org-Mode. The literate programming capabilities built into Org-Mode with Org-Babel were particularly useful for evaluating and rendering the Python source code blocks. The source code for the web site is also available from my <a href="https://github.com/j-brady/j-brady.github.io">GitHub</a> repo. I have laid out some of the important details for putting the page together below and all source files were rendered using Org-mode&rsquo;s <code>#+INCLUDE:</code> tag (<a href="https://orgmode.org/manual/Include-Files.html">see docs</a>) ensuring that they are up-to-date.
 </p>
 
 <div id="outline-container-org844e9a2" class="outline-2">
@@ -95,7 +95,6 @@ In the case where I want the source blocks to be visible by default  (this page)
 </div>
 </div>
 </div>
-
 
 <div id="outline-container-org2b51653" class="outline-2">
 <h2 id="org2b51653">Emacs-lisp</h2>
@@ -270,7 +269,12 @@ The custom CSS code used to style the page is included below. For the collapsibl
 <ul class="org-ul">
 <li><a href="https://alhassy.github.io/org-special-block-extras/">https://alhassy.github.io/org-special-block-extras/</a> could be a good way to go&#x2026;</li>
 </ul></li>
-<li>Enable syntax highlighting (I think this has something to do with using <code>emacs --batch</code> see <a href="#orgd48abc9">Makefile</a>)</li>
+<li>Enable syntax highlighting (I think this has something to do with using <code>emacs --batch</code> see <a href="#orgd48abc9">Makefile</a>)
+<ul class="org-ul">
+<li>currently working if <code>org-publish-all</code> is executed from within emacs.</li>
+<li>this is sub-optimal and requires extra steps</li>
+<li>I changed to a light Doom theme in order that Python variables were not colored white.</li>
+</ul></li>
 <li>Implement <code>target=_blank</code> for hyperlinks (presently all links open in the current tab)</li>
 </ol>
 </div>
@@ -313,7 +317,7 @@ The following resources were extremely useful to me:
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Jacob P Brady (<a href="mailto:jacob.brady@protonmail.com">jacob.brady@protonmail.com</a>)</p><p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.6)</p><div id="updated">Updated: 2021-12-23 Thu 20:09</div>
+<p class="author">Author: Jacob P Brady (<a href="mailto:jacob.brady@protonmail.com">jacob.brady@protonmail.com</a>)</p><p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.6)</p><div id="updated">Updated: 2021-12-23 Thu 20:20</div>
 </div>
 </body>
 </html>

@@ -4,7 +4,7 @@
 #+SETUPFILE: ../org-template/style.org
 #+OPTIONS: num:nil toc:nil
 
-I built this site using Emacs and Org-Mode. The literate programming capabilities built into Org-Mode with Org-Babel were particularly useful for evaluating and rendering the Python source code blocks. The source code for the web site is also available from my [[https://github.com/j-brady/j-brady.github.io][GitHub]] repo. I have laid out some of the important details for putting the page together below and all source files were rendered using Org-mode's ~#+INCLUDE:~ tag ([[https://orgmode.org/manual/Include-Files.html][see docs]]) ensuring that they are up-to-date.
+I built this site using (Doom) Emacs and Org-Mode. The literate programming capabilities built into Org-Mode with Org-Babel were particularly useful for evaluating and rendering the Python source code blocks. The source code for the web site is also available from my [[https://github.com/j-brady/j-brady.github.io][GitHub]] repo. I have laid out some of the important details for putting the page together below and all source files were rendered using Org-mode's ~#+INCLUDE:~ tag ([[https://orgmode.org/manual/Include-Files.html][see docs]]) ensuring that they are up-to-date.
 
 * Org-Mode
 To avoid rendering large blocks of source code and cluttering the pages I implemented a "hacky" solution for collapsible source code blocks using a combination of inline HTML, CSS and JavaScript. This is not ideal but is the best that I could manage without expending too much time.
@@ -68,7 +68,6 @@ In the case where I want the source blocks to be visible by default  (this page)
 #+end_export
 #+end_src
 
-
 * Emacs-lisp
 
 The Emacs-lisp code used to publish the web page
@@ -101,6 +100,9 @@ The custom CSS code used to style the page is included below. For the collapsibl
 1. Improve collapsible source code block implementation
    - https://alhassy.github.io/org-special-block-extras/ could be a good way to go...
 2. Enable syntax highlighting (I think this has something to do with using ~emacs --batch~ see [[*Makefile]])
+   - currently working if ~org-publish-all~ is executed from within emacs.
+   - this is sub-optimal and requires extra steps
+   - I changed to a light Doom theme in order that Python variables were not colored white.
 3. Implement ~target=_blank~ for hyperlinks (presently all links open in the current tab)
 * Useful links
  The following resources were extremely useful to me:
