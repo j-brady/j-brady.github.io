@@ -21,5 +21,5 @@ clean:
 touch:
 	@echo "Touching files..."
 	@touch *.org
-	@touch */*.org
-	@touch static/css/*.css
+	@touch **/*.org
+	@touch **/*.png
