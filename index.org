@@ -6,7 +6,7 @@
 
 -------
 * Work
-I am a Principal Scientist at the Novartis Institutes for Biomedical Research in Cambridge MA. My lab specializes in fragment based drug discovery (FBDD) and biophysical characterization of  biomolecules and their interactions using nuclear magnetic resonance (NMR). We integrate our NMR work with biochemical  and biophysical methods such as TR-FRET and SPR to guide drug discovery teams and drive medicinal chemistry efforts.
+I am a lab head at the Novartis Institutes for Biomedical Research in Cambridge MA. My lab specializes in fragment based drug discovery (FBDD) and biophysical characterization of  biomolecules and their interactions using Nuclear Magnetic Resonance (NMR). We integrate our NMR work with biochemical  and biophysical methods to guide drug discovery teams and drive medicinal chemistry efforts.
 
 - [[file:pages/postdoc.org][Post-doc]]
 - [[file:pages/phd.org][PhD]]
@@ -48,5 +48,7 @@ I use the Python Programming Language on a regular basis for my work. I also enj
 
 * Contact
 Email (see below) is the best way to contact me.
+
+#+HTML: <a href="https:github.com/j-brady" target="_blank"><img src="static/GitHub-Mark-120px-plus.png" style="width:48px"></a>
 
 -----
