@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2022-12-27 Tue 19:25 -->
+<!-- 2022-12-27 Tue 19:39 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>How I built this website</title>
@@ -22,9 +22,9 @@
 I built this site using (Doom) Emacs and Org-Mode. The literate programming capabilities built into Org-Mode with Org-Babel were particularly useful for evaluating and rendering the Python source code blocks. The source code for the web site is also available from my <a href="https://github.com/j-brady/j-brady.github.io">GitHub</a> repo. I have laid out some of the important details for putting the page together below and all source files were rendered using Org-mode's <code>#+INCLUDE:</code> tag (<a href="https://orgmode.org/manual/Include-Files.html">see docs</a>) ensuring that they are up-to-date.
 </p>
 
-<div id="outline-container-org4700c01" class="outline-2">
-<h2 id="org4700c01">Org-Mode</h2>
-<div class="outline-text-2" id="text-org4700c01">
+<div id="outline-container-org119cbbc" class="outline-2">
+<h2 id="org119cbbc">Org-Mode</h2>
+<div class="outline-text-2" id="text-org119cbbc">
 <p>
 To avoid rendering large blocks of source code and cluttering the pages I implemented a "hacky" solution for collapsible source code blocks using a combination of inline HTML, CSS and JavaScript. This is not ideal but is the best that I could manage without expending too much time.
 </p>
@@ -96,9 +96,9 @@ In the case where I want the source blocks to be visible by default  (this page)
 </div>
 </div>
 
-<div id="outline-container-org15cdab9" class="outline-2">
-<h2 id="org15cdab9">Emacs-lisp</h2>
-<div class="outline-text-2" id="text-org15cdab9">
+<div id="outline-container-org083d151" class="outline-2">
+<h2 id="org083d151">Emacs-lisp</h2>
+<div class="outline-text-2" id="text-org083d151">
 <p>
 The Emacs-lisp code used to publish the web page via the make file.
 </p>
@@ -209,9 +209,9 @@ In order for source blocks to be syntax highlighted the website should be build 
 </div>
 
 
-<div id="outline-container-orga81a071" class="outline-3">
-<h3 id="orga81a071">Setting relative paths</h3>
-<div class="outline-text-3" id="text-orga81a071">
+<div id="outline-container-orgc919e63" class="outline-3">
+<h3 id="orgc919e63">Setting relative paths</h3>
+<div class="outline-text-3" id="text-orgc919e63">
 <p>
 In order for links to work properly on a server they should be relative. By default Org-mode's <code>org-link-file-path-type</code> is set to <code>'adaptive</code> which will convert paths like <code>../blog/filename.org</code> to absolute paths (not what we want). Therefore, I set this variable to <code>'relative</code>. I also added set this in <code>publish.el</code>&#x2026; not sure if that is necessary though.
 </p>
@@ -224,9 +224,9 @@ In order for links to work properly on a server they should be relative. By defa
 </div>
 </div>
 
-<div id="outline-container-org7d5252a" class="outline-2">
-<h2 id="org7d5252a">Makefile</h2>
-<div class="outline-text-2" id="text-org7d5252a">
+<div id="outline-container-orgd717131" class="outline-2">
+<h2 id="orgd717131">Makefile</h2>
+<div class="outline-text-2" id="text-orgd717131">
 <p>
 Make is a very useful tool! Thanks to John Gosset of introducing it to me!
 </p>
@@ -265,9 +265,9 @@ touch:
 </div>
 </div>
 
-<div id="outline-container-orgd979a5a" class="outline-2">
-<h2 id="orgd979a5a">CSS</h2>
-<div class="outline-text-2" id="text-orgd979a5a">
+<div id="outline-container-org6b3044a" class="outline-2">
+<h2 id="org6b3044a">CSS</h2>
+<div class="outline-text-2" id="text-org6b3044a">
 <p>
 The custom CSS code used to style the page is included below. For the collapsible code blocks I used this example from the <a href="https://www.w3schools.com/howto/howto_js_collapsible.asp">W3 Schools</a> website.
 </p>
@@ -322,15 +322,15 @@ The custom CSS code used to style the page is included below. For the collapsibl
 </div>
 </div>
 
-<div id="outline-container-org25d7a0e" class="outline-2">
-<h2 id="org25d7a0e">Todo</h2>
-<div class="outline-text-2" id="text-org25d7a0e">
+<div id="outline-container-org067ac3b" class="outline-2">
+<h2 id="org067ac3b">Todo</h2>
+<div class="outline-text-2" id="text-org067ac3b">
 <ol class="org-ol">
 <li>Improve collapsible source code block implementation
 <ul class="org-ul">
 <li><a href="https://alhassy.github.io/org-special-block-extras/">https://alhassy.github.io/org-special-block-extras/</a> could be a good way to go&#x2026;</li>
 </ul></li>
-<li>Enable syntax highlighting (I think this has something to do with using <code>emacs --batch</code> see <a href="#org7d5252a">Makefile</a>)
+<li>Enable syntax highlighting (I think this has something to do with using <code>emacs --batch</code> see <a href="#orgd717131">Makefile</a>)
 <ul class="org-ul">
 <li>currently working if <code>org-publish-all</code> is executed from within emacs.</li>
 <li>this is sub-optimal and requires extra steps</li>
@@ -340,9 +340,9 @@ The custom CSS code used to style the page is included below. For the collapsibl
 </ol>
 </div>
 </div>
-<div id="outline-container-org521e70d" class="outline-2">
-<h2 id="org521e70d">Useful links</h2>
-<div class="outline-text-2" id="text-org521e70d">
+<div id="outline-container-org39c14d5" class="outline-2">
+<h2 id="org39c14d5">Useful links</h2>
+<div class="outline-text-2" id="text-org39c14d5">
 <p>
 The following resources were extremely useful to me:
 </p>
@@ -378,7 +378,7 @@ The following resources were extremely useful to me:
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Jacob P Brady (<a href="mailto:jacob.brady@protonmail.com">jacob.brady@protonmail.com</a>)</p><p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p><div id="updated">Updated: 2022-12-27 Tue 17:52</div>
+<p class="author">Author: Jacob P Brady (<a href="mailto:jacob.brady@protonmail.com">jacob.brady@protonmail.com</a>)</p><p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p><div id="updated">Updated: 2022-12-27 Tue 19:39</div>
 </div>
 </body>
 </html>

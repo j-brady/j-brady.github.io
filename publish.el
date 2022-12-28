@@ -1,5 +1,7 @@
+;;; publish.el ---- Jacob P. Brady
+;;; Commentary:
+;;;     config for webpage
 (require 'ox-publish)
-
 ;;; Code:
 ;;;
 (setq org-link-file-path-type 'relative)

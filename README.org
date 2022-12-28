@@ -1,5 +1,7 @@
 #+TITLE: README
-#+AUTHOR: Jacob Brady
+#+SETUPFILE: org-template/style.org
+#+OPTIONS: num:nil toc:nil
+#+HTML_HEAD: <link rel="stylesheet" href="static/css/style.css">
 
 * How to build website
 

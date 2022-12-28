@@ -1,7 +1,9 @@
 #+TITLE: Sitemap
 
 - [[file:index.org][Jacob P. Brady]]
+- [[file:README.org][README]]
 - blog
+  - [[file:blog/19F_nmr.org][19F NMR]]
   - [[file:blog/how_i_built_this_page.org][How I built this website]]
   - [[file:blog/reporter_assays.org][NMR Reporter Assays]]
   - [[file:blog/sitemap.org][Sitemap]]
