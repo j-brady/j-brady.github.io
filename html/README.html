@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2022-12-27 Tue 19:39 -->
+<!-- 2022-12-28 Wed 11:43 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>README</title>
@@ -19,58 +19,80 @@
 <header>
 <h1 class="title">README</h1>
 </header>
-<div id="outline-container-org1b5236e" class="outline-2">
-<h2 id="org1b5236e">How to build website</h2>
-<div class="outline-text-2" id="text-org1b5236e">
+<div id="outline-container-org1849647" class="outline-2">
+<h2 id="org1849647">How to build website</h2>
+<div class="outline-text-2" id="text-org1849647">
+</div>
+<div id="outline-container-orgc05d7d0" class="outline-3">
+<h3 id="orgc05d7d0">From within <code>emacs</code> session (recommended)</h3>
+<div class="outline-text-3" id="text-orgc05d7d0">
 <p>
-The following <code>Makefile</code> is used to build the webpage
+Currently recommended to use <code>M-x</code> <code>org-publish-all</code> from within a doom emacs session.
+</p>
+</div>
+<div id="outline-container-orge6b278d" class="outline-4">
+<h4 id="orge6b278d">Syntax highlighting with HTMLize</h4>
+<div class="outline-text-4" id="text-orge6b278d">
+<p>
+I&rsquo;ve been unable to figure out why syntax highlighting with HTMLize is not working for the batch process.
+In order for src blocks to be correctly syntax highlighted it is necessary to build the site from within an emacs session using  <code>M-x</code> <code>org-publish-all</code> .
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc10ab87" class="outline-3">
+<h3 id="orgc10ab87">Using <code>Makefile</code></h3>
+<div class="outline-text-3" id="text-orgc10ab87">
+<p>
+The following <code>Makefile</code> can be used to build the webpage
 </p>
 
 <div class="org-src-container">
-<pre class="src src-make"># Makefile for mywebpage
+<pre class="src src-makefile"><span style="color: #96A7A9; font-style: italic;"># </span><span style="color: #96A7A9; font-style: italic;">Makefile for mywebpage</span>
 
-.PHONY: all publish publish_no_init clean-touch
+<span style="color: #268bd2;">.PHONY</span>: all publish publish_no_init clean-touch
 
-all: clean publish
-clean-touch: clean touch
+<span style="color: #268bd2;">all</span>: clean publish
+<span style="color: #268bd2;">clean-touch</span>: clean touch
 
-publish: publish.el
-	@echo "Publishing... with current Emacs configurations."
-	emacs --batch --load publish.el --funcall org-publish-all
+<span style="color: #268bd2;">publish</span>: publish.el
+    <span style="color: #b58900; font-style: italic;">@</span>echo <span style="color: #2aa198;">"Publishing... with current Emacs configurations."</span>
+    emacs --batch --load publish.el --funcall org-publish-all
 
-publish_no_init: publish.el
-	@echo "Publishing... with --no-init."
-	emacs --batch --no-init --load publish.el --funcall org-publish-all
+<span style="color: #268bd2;">publish_no_init</span>: publish.el
+    <span style="color: #b58900; font-style: italic;">@</span>echo <span style="color: #2aa198;">"Publishing... with --no-init."</span>
+    emacs --batch --no-init --load publish.el --funcall org-publish-all
 
-clean:
-	@echo "Cleaning up.."
-	@rm -rvf *.elc
-	@rm -rvf html
-	@rm -rvf ~/.org-timestamps/*
+<span style="color: #268bd2;">clean</span>:
+    <span style="color: #b58900; font-style: italic;">@</span>echo <span style="color: #2aa198;">"Cleaning up.."</span>
+    <span style="color: #b58900; font-style: italic;">@</span>rm -rvf *.elc
+    <span style="color: #b58900; font-style: italic;">@</span>rm -rvf html
+    <span style="color: #b58900; font-style: italic;">@</span>rm -rvf ~/.org-timestamps/*
 
-touch:
-	@echo "Touching files..."
-	@touch *.org
-	@touch **/*.org
-	@touch **/*.png
-	@touch static/css/*.css
+<span style="color: #268bd2;">touch</span>:
+    <span style="color: #b58900; font-style: italic;">@</span>echo <span style="color: #2aa198;">"Touching files..."</span>
+    <span style="color: #b58900; font-style: italic;">@</span>touch *.org
+    <span style="color: #b58900; font-style: italic;">@</span>touch **/*.org
+    <span style="color: #b58900; font-style: italic;">@</span>touch **/*.png
+    <span style="color: #b58900; font-style: italic;">@</span>touch static/css/*.css
 </pre>
 </div>
 
 <p>
-To build run:
+To build using the <code>Makefile</code> run the following:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash">make clean-touch
-make all
+<pre class="src src-bash"><span style="color: #b58900; font-style: italic;">make</span> clean-touch
+<span style="color: #b58900; font-style: italic;">make</span> all
 </pre>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Jacob P Brady (<a href="mailto:jacob.brady@protonmail.com">jacob.brady@protonmail.com</a>)</p><p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p><div id="updated">Updated: 2022-12-27 Tue 19:39</div>
+<p class="author">Author: Jacob P Brady (<a href="mailto:jacob.brady@protonmail.com">jacob.brady@protonmail.com</a>)</p><p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6)</p><div id="updated">Updated: 2022-12-28 Wed 11:43</div>
 </div>
 </body>
 </html>

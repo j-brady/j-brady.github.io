@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2022-12-27 Tue 19:39 -->
+<!-- 2022-12-28 Wed 11:43 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>19F NMR</title>
@@ -40,13 +40,13 @@
 <header>
 <h1 class="title">19F NMR</h1>
 </header>
-<div id="outline-container-org4b4423f" class="outline-2">
-<h2 id="org4b4423f">Relaxation</h2>
-<div class="outline-text-2" id="text-org4b4423f">
+<div id="outline-container-orga2dcd65" class="outline-2">
+<h2 id="orga2dcd65">Relaxation</h2>
+<div class="outline-text-2" id="text-orga2dcd65">
 </div>
-<div id="outline-container-org5bebb25" class="outline-3">
-<h3 id="org5bebb25">Due to CSA</h3>
-<div class="outline-text-3" id="text-org5bebb25">
+<div id="outline-container-org149e367" class="outline-3">
+<h3 id="org149e367">Due to CSA</h3>
+<div class="outline-text-3" id="text-org149e367">
 \begin{equation}
 \frac{1}{T_1} = \frac{2}{15}(\sigma_| - \sigma_{\perp})^2\omega_F^2\tau_c\frac{1}{(1+\omega_F^2\tau_c^2)}
 \end{equation}
@@ -58,40 +58,40 @@
 
 <button type="button" class="collapsible">Toggle code</button>
 <div class="org-src-container">
-<pre class="src src-python">import matplotlib.pyplot as plt
-import matplotlib
-matplotlib.use("Agg")
-import numpy as np
+<pre class="src src-python"><span style="color: #859900; font-weight: bold; font-style: italic;">import</span> matplotlib.pyplot <span style="color: #859900; font-weight: bold; font-style: italic;">as</span> plt
+<span style="color: #859900; font-weight: bold; font-style: italic;">import</span> matplotlib
+matplotlib.use(<span style="color: #2aa198;">"Agg"</span>)
+<span style="color: #859900; font-weight: bold; font-style: italic;">import</span> numpy <span style="color: #859900; font-weight: bold; font-style: italic;">as</span> np
 
 
-def R1_csa(omega,tauc,shielding_tensor):
-    """ Calculate R1 relaxation due to chemical
-	shift anisotropy
-    """
-    return (2/15)*(shielding_tensor)**2*omega**2*tauc*(1/(1+omega**2*tauc**2))
+<span style="color: #859900; font-weight: bold; font-style: italic;">def</span> <span style="color: #b58900;">R1_csa</span>(omega,tauc,shielding_tensor):
+    <span style="color: #35a69c; font-style: italic;">""" Calculate R1 relaxation due to chemical</span>
+<span style="color: #35a69c; font-style: italic;">        shift anisotropy</span>
+<span style="color: #35a69c; font-style: italic;">    """</span>
+    <span style="color: #859900; font-weight: bold; font-style: italic;">return</span> (<span style="color: #6c71c4; font-weight: bold;">2</span>/<span style="color: #6c71c4; font-weight: bold;">15</span>)*(shielding_tensor)**<span style="color: #6c71c4; font-weight: bold;">2</span>*omega**<span style="color: #6c71c4; font-weight: bold;">2</span>*tauc*(<span style="color: #6c71c4; font-weight: bold;">1</span>/(<span style="color: #6c71c4; font-weight: bold;">1</span>+omega**<span style="color: #6c71c4; font-weight: bold;">2</span>*tauc**<span style="color: #6c71c4; font-weight: bold;">2</span>))
 
 
-def R2_csa(omega,tauc,shielding_tensor):
-    """ Calculate R2 relaxation due to chemical
-	shift anisotropy
-    """
-    return (2/15)*(shielding_tensor)**2*omega**2*tauc*(2/3+(1/2)*1/(1+omega**2*tauc**2))
+<span style="color: #859900; font-weight: bold; font-style: italic;">def</span> <span style="color: #b58900;">R2_csa</span>(omega,tauc,shielding_tensor):
+    <span style="color: #35a69c; font-style: italic;">""" Calculate R2 relaxation due to chemical</span>
+<span style="color: #35a69c; font-style: italic;">        shift anisotropy</span>
+<span style="color: #35a69c; font-style: italic;">    """</span>
+    <span style="color: #859900; font-weight: bold; font-style: italic;">return</span> (<span style="color: #6c71c4; font-weight: bold;">2</span>/<span style="color: #6c71c4; font-weight: bold;">15</span>)*(shielding_tensor)**<span style="color: #6c71c4; font-weight: bold;">2</span>*omega**<span style="color: #6c71c4; font-weight: bold;">2</span>*tauc*(<span style="color: #6c71c4; font-weight: bold;">2</span>/<span style="color: #6c71c4; font-weight: bold;">3</span>+(<span style="color: #6c71c4; font-weight: bold;">1</span>/<span style="color: #6c71c4; font-weight: bold;">2</span>)*<span style="color: #6c71c4; font-weight: bold;">1</span>/(<span style="color: #6c71c4; font-weight: bold;">1</span>+omega**<span style="color: #6c71c4; font-weight: bold;">2</span>*tauc**<span style="color: #6c71c4; font-weight: bold;">2</span>))
 
 
-tauc = 0.4e-9 # 0.4 ns
-shielding_tensor = 1.0 # ppm
-mhz = np.linspace(100,800)
-shielding_tensor = (shielding_tensor * mhz) * np.pi * 2.0
-omega = mhz * 1e6 * np.pi * 2.0
-fname = "../static/r2_vs_field_19F.png"
-plt.plot(omega, R1_csa(omega,tauc,shielding_tensor), label=r"$R_1$")
-plt.plot(omega, R2_csa(omega,tauc,shielding_tensor),label=r"$R_2$")
-plt.xlabel(r"$\omega_F$")
-plt.ylabel(r"($s^{-1}$)")
-plt.grid(linestyle="--",alpha=0.5)
+<span style="color: #268bd2;">tauc</span> = <span style="color: #6c71c4; font-weight: bold;">0</span>.4e-<span style="color: #6c71c4; font-weight: bold;">9</span> <span style="color: #96A7A9; font-style: italic;"># </span><span style="color: #96A7A9; font-style: italic;">0.4 ns</span>
+<span style="color: #268bd2;">shielding_tensor</span> = <span style="color: #6c71c4; font-weight: bold;">1.0</span> <span style="color: #96A7A9; font-style: italic;"># </span><span style="color: #96A7A9; font-style: italic;">ppm</span>
+<span style="color: #268bd2;">mhz</span> = np.linspace(<span style="color: #6c71c4; font-weight: bold;">100</span>,<span style="color: #6c71c4; font-weight: bold;">800</span>)
+<span style="color: #268bd2;">shielding_tensor</span> = (shielding_tensor * mhz) * np.pi * <span style="color: #6c71c4; font-weight: bold;">2.0</span>
+<span style="color: #268bd2;">omega</span> = mhz * 1e6 * np.pi * <span style="color: #6c71c4; font-weight: bold;">2.0</span>
+<span style="color: #268bd2;">fname</span> = <span style="color: #2aa198;">"../static/r2_vs_field_19F.png"</span>
+plt.plot(omega, R1_csa(omega,tauc,shielding_tensor), label=r<span style="color: #2aa198;">"$R_1$"</span>)
+plt.plot(omega, R2_csa(omega,tauc,shielding_tensor),label=r<span style="color: #2aa198;">"$R_2$"</span>)
+plt.xlabel(r<span style="color: #2aa198;">"$\omega_F$"</span>)
+plt.ylabel(r<span style="color: #2aa198;">"($s^{-1}$)"</span>)
+plt.grid(linestyle=<span style="color: #2aa198;">"--"</span>,alpha=<span style="color: #6c71c4; font-weight: bold;">0.5</span>)
 plt.legend()
 plt.savefig(fname)
-return fname
+<span style="color: #859900; font-weight: bold; font-style: italic;">return</span> fname
 </pre>
 </div>
 
@@ -123,7 +123,7 @@ return fname
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Jacob P Brady (<a href="mailto:jacob.brady@protonmail.com">jacob.brady@protonmail.com</a>)</p><p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p><div id="updated">Updated: 2022-12-27 Tue 19:39</div>
+<p class="author">Author: Jacob P Brady (<a href="mailto:jacob.brady@protonmail.com">jacob.brady@protonmail.com</a>)</p><p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6)</p><div id="updated">Updated: 2022-12-28 Wed 11:43</div>
 </div>
 </body>
 </html>

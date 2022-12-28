@@ -5,13 +5,20 @@
 
 * How to build website
 
-The following ~Makefile~ is used to build the webpage
+** From within ~emacs~ session (recommended)
+Currently recommended to use ~M-x~ ~org-publish-all~ from within a doom emacs session.
+*** Syntax highlighting with HTMLize
+I've been unable to figure out why syntax highlighting with HTMLize is not working for the batch process.
+In order for src blocks to be correctly syntax highlighted it is necessary to build the site from within an emacs session using  ~M-x~ ~org-publish-all~ .
+** Using ~Makefile~
+The following ~Makefile~ can be used to build the webpage
 
-#+INCLUDE: "./Makefile" src make
+#+INCLUDE: "./Makefile" src makefile
 
-To build run:
+To build using the ~Makefile~ run the following:
 
 #+begin_src bash
 make clean-touch
 make all
 #+end_src
+

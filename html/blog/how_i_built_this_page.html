@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2022-12-27 Tue 19:39 -->
+<!-- 2022-12-28 Wed 11:43 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>How I built this website</title>
@@ -19,14 +19,14 @@
 <header>
 <h1 class="title">How I built this website</h1>
 </header><p>
-I built this site using (Doom) Emacs and Org-Mode. The literate programming capabilities built into Org-Mode with Org-Babel were particularly useful for evaluating and rendering the Python source code blocks. The source code for the web site is also available from my <a href="https://github.com/j-brady/j-brady.github.io">GitHub</a> repo. I have laid out some of the important details for putting the page together below and all source files were rendered using Org-mode's <code>#+INCLUDE:</code> tag (<a href="https://orgmode.org/manual/Include-Files.html">see docs</a>) ensuring that they are up-to-date.
+I built this site using (Doom) Emacs and Org-Mode. The literate programming capabilities built into Org-Mode with Org-Babel were particularly useful for evaluating and rendering the Python source code blocks. The source code for the web site is also available from my <a href="https://github.com/j-brady/j-brady.github.io">GitHub</a> repo. I have laid out some of the important details for putting the page together below and all source files were rendered using Org-mode&rsquo;s <code>#+INCLUDE:</code> tag (<a href="https://orgmode.org/manual/Include-Files.html">see docs</a>) ensuring that they are up-to-date.
 </p>
 
-<div id="outline-container-org119cbbc" class="outline-2">
-<h2 id="org119cbbc">Org-Mode</h2>
-<div class="outline-text-2" id="text-org119cbbc">
+<div id="outline-container-org844e9a2" class="outline-2">
+<h2 id="org844e9a2">Org-Mode</h2>
+<div class="outline-text-2" id="text-org844e9a2">
 <p>
-To avoid rendering large blocks of source code and cluttering the pages I implemented a "hacky" solution for collapsible source code blocks using a combination of inline HTML, CSS and JavaScript. This is not ideal but is the best that I could manage without expending too much time.
+To avoid rendering large blocks of source code and cluttering the pages I implemented a &ldquo;hacky&rdquo; solution for collapsible source code blocks using a combination of inline HTML, CSS and JavaScript. This is not ideal but is the best that I could manage without expending too much time.
 </p>
 
 <p>
@@ -35,7 +35,7 @@ Above each source block I added the following inline HTML:
 
 <button type="button" class="collapsible">Toggle code</button>
 <div class="org-src-container">
-<pre class="src src-org">#+HTML: &lt;button type="button" class="collapsible"&gt;Toggle code&lt;/button
+<pre class="src src-org"><span style="color: #35a69c;">#+HTML: &lt;button type="button" class="collapsible"&gt;Toggle code&lt;/button</span>
 </pre>
 </div>
 
@@ -45,25 +45,25 @@ For the case where I wanted all code blocks to be hidden by default I added the 
 
 <button type="button" class="collapsible">Toggle code</button>
 <div class="org-src-container">
-<pre class="src src-org">#+HTML_HEAD: &lt;style&gt; .org-src-container {padding: 0 18px; display: none; overflow: hidden; background-color: #f1f1f1;} &lt;/style&gt;
-#+begin_export html
-&lt;script&gt;
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
+<pre class="src src-org"><span style="color: #35a69c;">#+HTML_HEAD: &lt;style&gt; .org-src-container {padding: 0 18px; display: none; overflow: hidden; background-color: </span><span style="color: #35a69c;">#f1f1f1</span><span style="color: #35a69c;">;} &lt;/style&gt;</span>
+<span style="background-color: #f7edd0;">#+begin_export html</span>
+<span style="background-color: #faf1d9;">&lt;</span><span style="color: #b58900; background-color: #faf1d9;">script</span><span style="background-color: #faf1d9;">&gt;</span>
+<span style="background-color: #faf1d9;">    var coll = document.getElementsByClassName("collapsible");</span>
+<span style="background-color: #faf1d9;">    var i;</span>
 
-    for (i = 0; i &lt; coll.length; i++) {
-	coll[i].addEventListener("click", function() {
-	    this.classList.toggle("active");
-	    var content = this.nextElementSibling;
-	    if (content.style.display === "block") {
-		content.style.display = "none";
-		} else {
-		content.style.display = "block";
-	    }
-	});
-    }
-&lt;/script&gt;
-#+end_export
+<span style="background-color: #faf1d9;">    for (i = 0; i &lt; coll.length; i++) {</span>
+<span style="background-color: #faf1d9;">        coll[i].addEventListener(</span><span style="color: #2aa198; background-color: #faf1d9;">"click"</span><span style="background-color: #faf1d9;">, function() {</span>
+<span style="background-color: #faf1d9;">            this.classList.toggle(</span><span style="color: #2aa198; background-color: #faf1d9;">"active"</span><span style="background-color: #faf1d9;">);</span>
+<span style="background-color: #faf1d9;">            var content = this.nextElementSibling;</span>
+<span style="background-color: #faf1d9;">            if (content.style.display === </span><span style="color: #2aa198; background-color: #faf1d9;">"block"</span><span style="background-color: #faf1d9;">) {</span>
+<span style="background-color: #faf1d9;">                content.style.display = </span><span style="color: #2aa198; background-color: #faf1d9;">"none"</span><span style="background-color: #faf1d9;">;</span>
+<span style="background-color: #faf1d9;">                } else {</span>
+<span style="background-color: #faf1d9;">                content.style.display = </span><span style="color: #2aa198; background-color: #faf1d9;">"block"</span><span style="background-color: #faf1d9;">;</span>
+<span style="background-color: #faf1d9;">            }</span>
+<span style="background-color: #faf1d9;">        });</span>
+<span style="background-color: #faf1d9;">    }</span>
+<span style="background-color: #faf1d9;">&lt;/</span><span style="color: #b58900; background-color: #faf1d9;">script</span><span style="background-color: #faf1d9;">&gt;</span>
+<span style="background-color: #f7edd0;">#+end_export</span>
 </pre>
 </div>
 
@@ -73,81 +73,82 @@ In the case where I want the source blocks to be visible by default  (this page)
 
 <button type="button" class="collapsible">Toggle code</button>
 <div class="org-src-container">
-<pre class="src src-org">#+begin_export html
-&lt;script&gt;
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
+<pre class="src src-org"><span style="background-color: #f7edd0;">#+begin_export html</span>
+<span style="background-color: #faf1d9;">&lt;</span><span style="color: #b58900; background-color: #faf1d9;">script</span><span style="background-color: #faf1d9;">&gt;</span>
+<span style="background-color: #faf1d9;">    var coll = document.getElementsByClassName("collapsible");</span>
+<span style="background-color: #faf1d9;">    var i;</span>
 
-    for (i = 0; i &lt; coll.length; i++) {
-	coll[i].addEventListener("click", function() {
-	    this.classList.toggle("active");
-	    var content = this.nextElementSibling;
-	    if (content.style.display === "none") {
-		content.style.display = "block";
-		} else {
-		content.style.display = "none";
-	    }
-	});
-    }
-&lt;/script&gt;
-#+end_export
+<span style="background-color: #faf1d9;">    for (i = 0; i &lt; coll.length; i++) {</span>
+<span style="background-color: #faf1d9;">        coll[i].addEventListener(</span><span style="color: #2aa198; background-color: #faf1d9;">"click"</span><span style="background-color: #faf1d9;">, function() {</span>
+<span style="background-color: #faf1d9;">            this.classList.toggle(</span><span style="color: #2aa198; background-color: #faf1d9;">"active"</span><span style="background-color: #faf1d9;">);</span>
+<span style="background-color: #faf1d9;">            var content = this.nextElementSibling;</span>
+<span style="background-color: #faf1d9;">            if (content.style.display === </span><span style="color: #2aa198; background-color: #faf1d9;">"none"</span><span style="background-color: #faf1d9;">) {</span>
+<span style="background-color: #faf1d9;">                content.style.display = </span><span style="color: #2aa198; background-color: #faf1d9;">"block"</span><span style="background-color: #faf1d9;">;</span>
+<span style="background-color: #faf1d9;">                } else {</span>
+<span style="background-color: #faf1d9;">                content.style.display = </span><span style="color: #2aa198; background-color: #faf1d9;">"none"</span><span style="background-color: #faf1d9;">;</span>
+<span style="background-color: #faf1d9;">            }</span>
+<span style="background-color: #faf1d9;">        });</span>
+<span style="background-color: #faf1d9;">    }</span>
+<span style="background-color: #faf1d9;">&lt;/</span><span style="color: #b58900; background-color: #faf1d9;">script</span><span style="background-color: #faf1d9;">&gt;</span>
+<span style="background-color: #f7edd0;">#+end_export</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org083d151" class="outline-2">
-<h2 id="org083d151">Emacs-lisp</h2>
-<div class="outline-text-2" id="text-org083d151">
+<div id="outline-container-org2b51653" class="outline-2">
+<h2 id="org2b51653">Emacs-lisp</h2>
+<div class="outline-text-2" id="text-org2b51653">
 <p>
 The Emacs-lisp code used to publish the web page via the make file.
 </p>
 
 <button type="button" class="collapsible">Toggle code</button>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">;;; publish.el ---- Jacob P. Brady
-;;; Commentary:
-;;;     config for webpage
-(require 'ox-publish)
-;;; Code:
-;;;
-(setq org-link-file-path-type 'relative)
-(setq org-publish-project-alist
+<pre class="src src-emacs-lisp"><span style="color: #96A7A9; font-style: italic;">;;; </span><span style="color: #96A7A9; font-style: italic;">publish.el ---- Jacob P. Brady</span>
+<span style="color: #96A7A9; font-style: italic;">;;; </span><span style="color: #96A7A9; font-style: italic;">Commentary:</span>
+<span style="color: #96A7A9; font-style: italic;">;;;     </span><span style="color: #96A7A9; font-style: italic;">config for webpage</span>
+(<span style="color: #859900; font-weight: bold; font-style: italic;">require</span> '<span style="color: #6c71c4; font-weight: bold;">ox-publish</span>)
+<span style="color: #96A7A9; font-style: italic;">;;; </span><span style="color: #96A7A9; font-style: italic;">Code:</span>
+<span style="color: #96A7A9; font-style: italic;">;;;</span>
+(<span style="color: #859900; font-weight: bold; font-style: italic;">setq</span> org-link-file-path-type 'relative)
+(<span style="color: #859900; font-weight: bold; font-style: italic;">setq</span> org-publish-project-alist
       '(
-	("j-brady.github.io-content"
-	:base-directory "./"
-	:base-extension "org"
-	:publishing-directory "./html/"
-	:recursive t
-	:publishing-function org-html-publish-to-html
-	:headline-levels 4
-	;:auto-preamble t
-	:auto-sitemap t                ; Generate sitemap.org automagically...
-	:sitemap-filename "sitemap.org"  ; ... call it sitemap.org (it's the default)...
-	:sitemap-title "Sitemap"         ; ... with title 'Sitemap'.
-	:email "jacob.brady@protonmail.com"
-	:author "Jacob P Brady"
-	; HTML5
-	:html-doctype "html5"
-	:html-html5-fancy t
-	; Disable some Org's HTML defaults
-	:html-head-include-scripts nil
-	:html-head-include-default-style nil
-	; HTML preamble
-	;:html-preamble
-	:html-postamble "&lt;p class=\"author\"&gt;Author: %a (%e)&lt;/p&gt;&lt;p class=\"creator\"&gt;%c&lt;/p&gt;&lt;div id=\"updated\"&gt;Updated: %C&lt;/div&gt;")
-       ("j-brady.github.io-static"
-	:base-directory "./"
-	:base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-	:publishing-directory "./html/"
-	:recursive t
-	:publishing-function org-publish-attachment
-	)
-       ("j-brady.github.io"
-	:components ("j-brady.github.io-content" "j-brady.github.io-static"))))
+        (<span style="color: #2aa198;">"j-brady.github.io-content"</span>
+        <span style="color: #d33682; font-style: italic;">:base-directory</span> <span style="color: #2aa198;">"./"</span>
+        <span style="color: #d33682; font-style: italic;">:base-extension</span> <span style="color: #2aa198;">"org"</span>
+        <span style="color: #d33682; font-style: italic;">:publishing-directory</span> <span style="color: #2aa198;">"./html/"</span>
+        <span style="color: #d33682; font-style: italic;">:htmlized-source</span> t
+        <span style="color: #d33682; font-style: italic;">:recursive</span> t
+        <span style="color: #d33682; font-style: italic;">:publishing-function</span> org-html-publish-to-html
+        <span style="color: #d33682; font-style: italic;">:headline-levels</span> <span style="color: #6c71c4; font-weight: bold;">4</span>
+        <span style="color: #96A7A9; font-style: italic;">;</span><span style="color: #96A7A9; font-style: italic;">:auto-preamble t</span>
+        <span style="color: #d33682; font-style: italic;">:auto-sitemap</span> t                <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">Generate sitemap.org automagically...</span>
+        <span style="color: #d33682; font-style: italic;">:sitemap-filename</span> <span style="color: #2aa198;">"sitemap.org"</span>  <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">... call it sitemap.org (it's the default)...</span>
+        <span style="color: #d33682; font-style: italic;">:sitemap-title</span> <span style="color: #2aa198;">"Sitemap"</span>         <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">... with title '</span><span style="color: #6c71c4; font-weight: bold; font-style: italic;">Sitemap</span><span style="color: #96A7A9; font-style: italic;">'.</span>
+        <span style="color: #d33682; font-style: italic;">:email</span> <span style="color: #2aa198;">"jacob.brady@protonmail.com"</span>
+        <span style="color: #d33682; font-style: italic;">:author</span> <span style="color: #2aa198;">"Jacob P Brady"</span>
+        <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">HTML5</span>
+        <span style="color: #d33682; font-style: italic;">:html-doctype</span> <span style="color: #2aa198;">"html5"</span>
+        <span style="color: #d33682; font-style: italic;">:html-html5-fancy</span> t
+        <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">Disable some Org's HTML defaults</span>
+        <span style="color: #d33682; font-style: italic;">:html-head-include-scripts</span> nil
+        <span style="color: #d33682; font-style: italic;">:html-head-include-default-style</span> nil
+        <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">HTML preamble</span>
+        <span style="color: #96A7A9; font-style: italic;">;</span><span style="color: #96A7A9; font-style: italic;">:html-preamble</span>
+        <span style="color: #d33682; font-style: italic;">:html-postamble</span> <span style="color: #2aa198;">"&lt;p class=\"author\"&gt;Author: %a (%e)&lt;/p&gt;&lt;p class=\"creator\"&gt;%c&lt;/p&gt;&lt;div id=\"updated\"&gt;Updated: %C&lt;/div&gt;"</span>)
+       (<span style="color: #2aa198;">"j-brady.github.io-static"</span>
+        <span style="color: #d33682; font-style: italic;">:base-directory</span> <span style="color: #2aa198;">"./"</span>
+        <span style="color: #d33682; font-style: italic;">:base-extension</span> <span style="color: #2aa198;">"css</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">js</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">png</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">jpg</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">gif</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">pdf</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">mp3</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">ogg</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">swf"</span>
+        <span style="color: #d33682; font-style: italic;">:publishing-directory</span> <span style="color: #2aa198;">"./html/"</span>
+        <span style="color: #d33682; font-style: italic;">:recursive</span> t
+        <span style="color: #d33682; font-style: italic;">:publishing-function</span> org-publish-attachment
+        )
+       (<span style="color: #2aa198;">"j-brady.github.io"</span>
+        <span style="color: #d33682; font-style: italic;">:components</span> (<span style="color: #2aa198;">"j-brady.github.io-content"</span> <span style="color: #2aa198;">"j-brady.github.io-static"</span>))))
 
-(provide 'publish)
-;;; publish.el
+(<span style="color: #859900; font-weight: bold; font-style: italic;">provide</span> '<span style="color: #6c71c4; font-weight: bold;">publish</span>)
+<span style="color: #96A7A9; font-style: italic;">;;; </span><span style="color: #96A7A9; font-style: italic;">publish.el</span>
 </pre>
 </div>
 
@@ -155,182 +156,178 @@ The Emacs-lisp code used to publish the web page via the make file.
 Unfortunately, I had trouble getting the source code syntax highlighting to work with this method so I also added this code (slightly modified) to my literate emacs configuration file, <code>config.org</code>, and publish the website directly from within Emacs by running <code>org-publish-all</code>. The relevant section of my config file is shown below:
 </p>
 
-
 <button type="button" class="collapsible">Toggle code</button>
-<p>
-In order for source blocks to be syntax highlighted the website should be build by running <code>org-publish-all</code> inside the <code>j-brady.github.io</code> project.
-</p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(require 'ox-publish)
+<pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold; font-style: italic;">require</span> '<span style="color: #6c71c4; font-weight: bold;">ox-publish</span>)
 
-;;; Code:
-;;;
+<span style="color: #96A7A9; font-style: italic;">;;; </span><span style="color: #96A7A9; font-style: italic;">Code:</span>
+<span style="color: #96A7A9; font-style: italic;">;;;</span>
 
-(setq org-link-file-path-type 'relative)
-(setq org-publish-project-alist
+(<span style="color: #859900; font-weight: bold; font-style: italic;">setq</span> org-link-file-path-type 'relative)
+(<span style="color: #859900; font-weight: bold; font-style: italic;">setq</span> org-publish-project-alist
       '(
-	("j-brady.github.io-content"
-	:base-directory "~/src/j-brady.github.io/"
-	:base-extension "org"
-	:publishing-directory "~/src/j-brady.github.io/html/"
-	:recursive t
-	:publishing-function org-html-publish-to-html
-	:headline-levels 4
-	;:auto-preamble t
-	:auto-sitemap t                ; Generate sitemap.org automagically...
-	:sitemap-filename "sitemap.org"  ; ... call it sitemap.org (it's the default)...
-	:sitemap-title "Sitemap"         ; ... with title 'Sitemap'.
-	:email "jacob.brady@protonmail.com"
-	:author "Jacob P Brady"
-	; HTML5
-	:html-doctype "html5"
-	:html-html5-fancy t
-	; Disable some Org's HTML defaults
-	:html-head-include-scripts nil
-	:html-head-include-default-style nil
-	; HTML preamble
-	;:html-preamble
-	:html-postamble "&lt;p class=\"author\"&gt;Author: %a (%e)&lt;/p&gt;&lt;p class=\"creator\"&gt;%c&lt;/p&gt;&lt;div id=\"updated\"&gt;Updated: %C&lt;/div&gt;")
-       ("j-brady.github.io-static"
-	:base-directory "~/src/j-brady.github.io/"
-	:base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-	:publishing-directory "~/src/j-brady.github.io/html/"
-	:recursive t
-	:publishing-function org-publish-attachment
-	)
-       ("j-brady.github.io"
-	:components ("j-brady.github.io-content" "j-brady.github.io-static"))))
+        (<span style="color: #2aa198;">"j-brady.github.io-content"</span>
+        <span style="color: #d33682; font-style: italic;">:base-directory</span> <span style="color: #2aa198;">"~/src/j-brady.github.io/"</span>
+        <span style="color: #d33682; font-style: italic;">:base-extension</span> <span style="color: #2aa198;">"org"</span>
+        <span style="color: #d33682; font-style: italic;">:publishing-directory</span> <span style="color: #2aa198;">"~/src/j-brady.github.io/html/"</span>
+        <span style="color: #d33682; font-style: italic;">:recursive</span> t
+        <span style="color: #d33682; font-style: italic;">:publishing-function</span> org-html-publish-to-html
+        <span style="color: #d33682; font-style: italic;">:headline-levels</span> <span style="color: #6c71c4; font-weight: bold;">4</span>
+        <span style="color: #96A7A9; font-style: italic;">;</span><span style="color: #96A7A9; font-style: italic;">:auto-preamble t</span>
+        <span style="color: #d33682; font-style: italic;">:auto-sitemap</span> t                <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">Generate sitemap.org automagically...</span>
+        <span style="color: #d33682; font-style: italic;">:sitemap-filename</span> <span style="color: #2aa198;">"sitemap.org"</span>  <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">... call it sitemap.org (it's the default)...</span>
+        <span style="color: #d33682; font-style: italic;">:sitemap-title</span> <span style="color: #2aa198;">"Sitemap"</span>         <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">... with title '</span><span style="color: #6c71c4; font-weight: bold; font-style: italic;">Sitemap</span><span style="color: #96A7A9; font-style: italic;">'.</span>
+        <span style="color: #d33682; font-style: italic;">:email</span> <span style="color: #2aa198;">"jacob.brady@protonmail.com"</span>
+        <span style="color: #d33682; font-style: italic;">:author</span> <span style="color: #2aa198;">"Jacob P Brady"</span>
+        <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">HTML5</span>
+        <span style="color: #d33682; font-style: italic;">:html-doctype</span> <span style="color: #2aa198;">"html5"</span>
+        <span style="color: #d33682; font-style: italic;">:html-html5-fancy</span> t
+        <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">Disable some Org's HTML defaults</span>
+        <span style="color: #d33682; font-style: italic;">:html-head-include-scripts</span> nil
+        <span style="color: #d33682; font-style: italic;">:html-head-include-default-style</span> nil
+        <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">HTML preamble</span>
+        <span style="color: #96A7A9; font-style: italic;">;</span><span style="color: #96A7A9; font-style: italic;">:html-preamble</span>
+        <span style="color: #d33682; font-style: italic;">:html-postamble</span> <span style="color: #2aa198;">"&lt;p class=\"author\"&gt;Author: %a (%e)&lt;/p&gt;&lt;p class=\"creator\"&gt;%c&lt;/p&gt;&lt;div id=\"updated\"&gt;Updated: %C&lt;/div&gt;"</span>)
+       (<span style="color: #2aa198;">"j-brady.github.io-static"</span>
+        <span style="color: #d33682; font-style: italic;">:base-directory</span> <span style="color: #2aa198;">"~/src/j-brady.github.io/"</span>
+        <span style="color: #d33682; font-style: italic;">:base-extension</span> <span style="color: #2aa198;">"css</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">js</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">png</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">jpg</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">gif</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">pdf</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">mp3</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">ogg</span><span style="color: #268bd2; font-weight: bold;">\\</span><span style="color: #268bd2; font-weight: bold;">|</span><span style="color: #2aa198;">swf"</span>
+        <span style="color: #d33682; font-style: italic;">:publishing-directory</span> <span style="color: #2aa198;">"~/src/j-brady.github.io/html/"</span>
+        <span style="color: #d33682; font-style: italic;">:recursive</span> t
+        <span style="color: #d33682; font-style: italic;">:publishing-function</span> org-publish-attachment
+        )
+       (<span style="color: #2aa198;">"j-brady.github.io"</span>
+        <span style="color: #d33682; font-style: italic;">:components</span> (<span style="color: #2aa198;">"j-brady.github.io-content"</span> <span style="color: #2aa198;">"j-brady.github.io-static"</span>))))
 
-;;(provide 'publish)
-;;; publish.el
+<span style="color: #96A7A9; font-style: italic;">;;</span><span style="color: #96A7A9; font-style: italic;">(provide 'publish)</span>
+<span style="color: #96A7A9; font-style: italic;">;;; </span><span style="color: #96A7A9; font-style: italic;">publish.el</span>
 
 </pre>
 </div>
 </div>
 
 
-<div id="outline-container-orgc919e63" class="outline-3">
-<h3 id="orgc919e63">Setting relative paths</h3>
-<div class="outline-text-3" id="text-orgc919e63">
+<div id="outline-container-orgd9d590f" class="outline-3">
+<h3 id="orgd9d590f">Setting relative paths</h3>
+<div class="outline-text-3" id="text-orgd9d590f">
 <p>
-In order for links to work properly on a server they should be relative. By default Org-mode's <code>org-link-file-path-type</code> is set to <code>'adaptive</code> which will convert paths like <code>../blog/filename.org</code> to absolute paths (not what we want). Therefore, I set this variable to <code>'relative</code>. I also added set this in <code>publish.el</code>&#x2026; not sure if that is necessary though.
+In order for links to work properly on a server they should be relative. By default Org-mode&rsquo;s <code>org-link-file-path-type</code> is set to <code>'adaptive</code> which will convert paths like <code>../blog/filename.org</code> to absolute paths (not what we want). Therefore, I set this variable to <code>'relative</code>. I also added set this in <code>publish.el</code>&#x2026; not sure if that is necessary though.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(setq org-link-file-path-type 'relative)
+<pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold; font-style: italic;">setq</span> org-link-file-path-type 'relative)
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgd717131" class="outline-2">
-<h2 id="orgd717131">Makefile</h2>
-<div class="outline-text-2" id="text-orgd717131">
+<div id="outline-container-orgd48abc9" class="outline-2">
+<h2 id="orgd48abc9">Makefile</h2>
+<div class="outline-text-2" id="text-orgd48abc9">
 <p>
 Make is a very useful tool! Thanks to John Gosset of introducing it to me!
 </p>
 
 <button type="button" class="collapsible">Toggle code</button>
 <div class="org-src-container">
-<pre class="src src-make"># Makefile for mywebpage
+<pre class="src src-makefile"><span style="color: #96A7A9; font-style: italic;"># </span><span style="color: #96A7A9; font-style: italic;">Makefile for mywebpage</span>
 
-.PHONY: all publish publish_no_init clean-touch
+<span style="color: #268bd2;">.PHONY</span>: all publish publish_no_init clean-touch
 
-all: clean publish
-clean-touch: clean touch
+<span style="color: #268bd2;">all</span>: clean publish
+<span style="color: #268bd2;">clean-touch</span>: clean touch
 
-publish: publish.el
-	@echo "Publishing... with current Emacs configurations."
-	emacs --batch --load publish.el --funcall org-publish-all
+<span style="color: #268bd2;">publish</span>: publish.el
+    <span style="color: #b58900; font-style: italic;">@</span>echo <span style="color: #2aa198;">"Publishing... with current Emacs configurations."</span>
+    emacs --batch --load publish.el --funcall org-publish-all
 
-publish_no_init: publish.el
-	@echo "Publishing... with --no-init."
-	emacs --batch --no-init --load publish.el --funcall org-publish-all
+<span style="color: #268bd2;">publish_no_init</span>: publish.el
+    <span style="color: #b58900; font-style: italic;">@</span>echo <span style="color: #2aa198;">"Publishing... with --no-init."</span>
+    emacs --batch --no-init --load publish.el --funcall org-publish-all
 
-clean:
-	@echo "Cleaning up.."
-	@rm -rvf *.elc
-	@rm -rvf html
-	@rm -rvf ~/.org-timestamps/*
+<span style="color: #268bd2;">clean</span>:
+    <span style="color: #b58900; font-style: italic;">@</span>echo <span style="color: #2aa198;">"Cleaning up.."</span>
+    <span style="color: #b58900; font-style: italic;">@</span>rm -rvf *.elc
+    <span style="color: #b58900; font-style: italic;">@</span>rm -rvf html
+    <span style="color: #b58900; font-style: italic;">@</span>rm -rvf ~/.org-timestamps/*
 
-touch:
-	@echo "Touching files..."
-	@touch *.org
-	@touch **/*.org
-	@touch **/*.png
-	@touch static/css/*.css
+<span style="color: #268bd2;">touch</span>:
+    <span style="color: #b58900; font-style: italic;">@</span>echo <span style="color: #2aa198;">"Touching files..."</span>
+    <span style="color: #b58900; font-style: italic;">@</span>touch *.org
+    <span style="color: #b58900; font-style: italic;">@</span>touch **/*.org
+    <span style="color: #b58900; font-style: italic;">@</span>touch **/*.png
+    <span style="color: #b58900; font-style: italic;">@</span>touch static/css/*.css
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org6b3044a" class="outline-2">
-<h2 id="org6b3044a">CSS</h2>
-<div class="outline-text-2" id="text-org6b3044a">
+<div id="outline-container-org58cd6c1" class="outline-2">
+<h2 id="org58cd6c1">CSS</h2>
+<div class="outline-text-2" id="text-org58cd6c1">
 <p>
 The custom CSS code used to style the page is included below. For the collapsible code blocks I used this example from the <a href="https://www.w3schools.com/howto/howto_js_collapsible.asp">W3 Schools</a> website.
 </p>
 
 <button type="button" class="collapsible">Toggle code</button>
 <div class="org-src-container">
-<pre class="src src-css">body {
-    font-family: 'Alegreya', serif;
-    margin: 8px;
+<pre class="src src-css"><span style="color: #268bd2;">body </span>{
+    <span style="color: #859900;">font-family</span>: <span style="color: #2aa198;">'Alegreya'</span>, serif;
+    <span style="color: #859900;">margin</span>: 8px;
 }
-.title {
-  text-align: center;
+<span style="color: #268bd2;">.title </span>{
+  <span style="color: #859900;">text-align</span>: center;
 }
 
-/* Larger than mobile screen */
-@media (min-width: 40.0rem) {
-  body {
-    margin-left: 12rem;
-    margin-right: 12rem;
-    margin-top: 2rem;
+<span style="color: #96A7A9; font-style: italic;">/* </span><span style="color: #96A7A9; font-style: italic;">Larger than mobile screen</span><span style="color: #96A7A9; font-style: italic;"> */</span>
+<span style="color: #d33682; font-style: italic;">@media</span> (min-width: 40.0rem) {
+  <span style="color: #268bd2;">body </span>{
+    <span style="color: #859900;">margin-left</span>: 12rem;
+    <span style="color: #859900;">margin-right</span>: 12rem;
+    <span style="color: #859900;">margin-top</span>: 2rem;
   }
 }
 
-/* Larger than tablet screen */
-@media (min-width: 80.0rem) {
-  body {
-    margin-left: 24rem;
-    margin-right: 24rem;
-    margin-top: 4rem;
+<span style="color: #96A7A9; font-style: italic;">/* </span><span style="color: #96A7A9; font-style: italic;">Larger than tablet screen</span><span style="color: #96A7A9; font-style: italic;"> */</span>
+<span style="color: #d33682; font-style: italic;">@media</span> (min-width: 80.0rem) {
+  <span style="color: #268bd2;">body </span>{
+    <span style="color: #859900;">margin-left</span>: 24rem;
+    <span style="color: #859900;">margin-right</span>: 24rem;
+    <span style="color: #859900;">margin-top</span>: 4rem;
   }
 }
 
-/* Larger than desktop screen */
-@media (min-width: 120.0rem) {
-  body {
-    margin-left: 32rem;
-    margin-right: 32rem;
-    margin-top: 6rem;
+<span style="color: #96A7A9; font-style: italic;">/* </span><span style="color: #96A7A9; font-style: italic;">Larger than desktop screen</span><span style="color: #96A7A9; font-style: italic;"> */</span>
+<span style="color: #d33682; font-style: italic;">@media</span> (min-width: 120.0rem) {
+  <span style="color: #268bd2;">body </span>{
+    <span style="color: #859900;">margin-left</span>: 32rem;
+    <span style="color: #859900;">margin-right</span>: 32rem;
+    <span style="color: #859900;">margin-top</span>: 6rem;
   }
 }
 
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active, .collapsible:hover {
-  background-color: #ccc;
+<span style="color: #96A7A9; font-style: italic;">/* </span><span style="color: #96A7A9; font-style: italic;">Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover)</span><span style="color: #96A7A9; font-style: italic;"> */</span>
+<span style="color: #268bd2;">.active, .collapsible:hover </span>{
+  <span style="color: #859900;">background-color</span>: <span style="color: #000000; background-color: #ccc;">#ccc</span>;
 }
 
-/*.src-python {
-  background-color: #ccc;
-}*/
+<span style="color: #96A7A9; font-style: italic;">/*</span><span style="color: #96A7A9; font-style: italic;">.src-python {</span>
+<span style="color: #96A7A9; font-style: italic;">  background-color: #ccc;</span>
+<span style="color: #96A7A9; font-style: italic;">}</span><span style="color: #96A7A9; font-style: italic;">*/</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org067ac3b" class="outline-2">
-<h2 id="org067ac3b">Todo</h2>
-<div class="outline-text-2" id="text-org067ac3b">
+<div id="outline-container-org8b5c509" class="outline-2">
+<h2 id="org8b5c509">Todo</h2>
+<div class="outline-text-2" id="text-org8b5c509">
 <ol class="org-ol">
 <li>Improve collapsible source code block implementation
 <ul class="org-ul">
 <li><a href="https://alhassy.github.io/org-special-block-extras/">https://alhassy.github.io/org-special-block-extras/</a> could be a good way to go&#x2026;</li>
 </ul></li>
-<li>Enable syntax highlighting (I think this has something to do with using <code>emacs --batch</code> see <a href="#orgd717131">Makefile</a>)
+<li>Enable syntax highlighting (I think this has something to do with using <code>emacs --batch</code> see <a href="#orgd48abc9">Makefile</a>)
 <ul class="org-ul">
 <li>currently working if <code>org-publish-all</code> is executed from within emacs.</li>
 <li>this is sub-optimal and requires extra steps</li>
@@ -340,9 +337,9 @@ The custom CSS code used to style the page is included below. For the collapsibl
 </ol>
 </div>
 </div>
-<div id="outline-container-org39c14d5" class="outline-2">
-<h2 id="org39c14d5">Useful links</h2>
-<div class="outline-text-2" id="text-org39c14d5">
+<div id="outline-container-org16690fa" class="outline-2">
+<h2 id="org16690fa">Useful links</h2>
+<div class="outline-text-2" id="text-org16690fa">
 <p>
 The following resources were extremely useful to me:
 </p>
@@ -378,7 +375,7 @@ The following resources were extremely useful to me:
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Jacob P Brady (<a href="mailto:jacob.brady@protonmail.com">jacob.brady@protonmail.com</a>)</p><p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p><div id="updated">Updated: 2022-12-27 Tue 19:39</div>
+<p class="author">Author: Jacob P Brady (<a href="mailto:jacob.brady@protonmail.com">jacob.brady@protonmail.com</a>)</p><p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6)</p><div id="updated">Updated: 2022-12-28 Wed 11:43</div>
 </div>
 </body>
 </html>

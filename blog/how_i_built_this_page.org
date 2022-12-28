@@ -78,9 +78,8 @@ The Emacs-lisp code used to publish the web page via the make file.
 
 Unfortunately, I had trouble getting the source code syntax highlighting to work with this method so I also added this code (slightly modified) to my literate emacs configuration file, ~config.org~, and publish the website directly from within Emacs by running ~org-publish-all~. The relevant section of my config file is shown below:
 
-
 #+HTML: <button type="button" class="collapsible">Toggle code</button>
-#+INCLUDE: "~/.doom.d/config.org::*Website" :only-contents t
+#+INCLUDE: "~/.doom.d/config.org::*publish.el" :only-contents t
 
 
 ** Setting relative paths
@@ -95,7 +94,7 @@ In order for links to work properly on a server they should be relative. By defa
 Make is a very useful tool! Thanks to John Gosset of introducing it to me!
 
 #+HTML: <button type="button" class="collapsible">Toggle code</button>
-#+INCLUDE: "../Makefile" src make
+#+INCLUDE: "../Makefile" src makefile
 
 * CSS
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2022-12-27 Tue 19:39 -->
+<!-- 2022-12-28 Wed 11:43 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>NMR Reporter Assays</title>
@@ -84,119 +84,119 @@ A good reporter molecule should have the following qualities:
 <p>
 A key advantage of NMR based reporter assays over other techniques such as fluorescence polarisation (FP) is that a sensitive assay can be achieved at much lower bound ligand fractions.
 For example, a typical FP assay requires an \(f_0\) of \(0.5-0.8\) whereas an NMR assay can be highly sensitive with \(f_0\) values as low as 0.003.
-This means that the measurable range of \(K_i\) values by NMR reporter assays is around 2 orders of magnitude wider (see <a href="#org4fdb611">IC50</a>).
+This means that the measurable range of \(K_i\) values by NMR reporter assays is around 2 orders of magnitude wider (see <a href="#org2163618">IC50</a>).
 </p>
 
 <p>
-Below is a schematic showing the key experimental read-outs of a reporter assay (see <a href="#orgadc87b4">Assay quality metrics</a> for more details). On the left is the reporter only sample for which a sharp intense reporter signal is observed.
+Below is a schematic showing the key experimental read-outs of a reporter assay (see <a href="#org3e5e38d">Assay quality metrics</a> for more details). On the left is the reporter only sample for which a sharp intense reporter signal is observed.
 Upon addition of protein to the sample the reporter signal is greatly attenuated  (centre) due to the reporter binding to a specific site on the protein.
 Addition of a competitor molecule (right) leads to a recovery of signal intensity due competition for binding to the same site on the protein and hence a reduction in the bound fraction of reporter.
 </p>
 
 <button type="button" class="collapsible">Show code</button>
 <div class="org-src-container">
-<pre class="src src-python">import nmrglue as ng
-import numpy as np
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
+<pre class="src src-python"><span style="color: #859900; font-weight: bold; font-style: italic;">import</span> nmrglue <span style="color: #859900; font-weight: bold; font-style: italic;">as</span> ng
+<span style="color: #859900; font-weight: bold; font-style: italic;">import</span> numpy <span style="color: #859900; font-weight: bold; font-style: italic;">as</span> np
+<span style="color: #859900; font-weight: bold; font-style: italic;">import</span> matplotlib
+matplotlib.use(<span style="color: #2aa198;">'Agg'</span>)
+<span style="color: #859900; font-weight: bold; font-style: italic;">import</span> matplotlib.pyplot <span style="color: #859900; font-weight: bold; font-style: italic;">as</span> plt
 
-def I(I0: float, R2: float, tau: float) -&gt; float:
-   return I0*np.exp(-1.0*R2*tau)
+<span style="color: #859900; font-weight: bold; font-style: italic;">def</span> <span style="color: #b58900;">I</span>(I0: <span style="color: #d33682; font-style: italic;">float</span>, R2: <span style="color: #d33682; font-style: italic;">float</span>, tau: <span style="color: #d33682; font-style: italic;">float</span>) -&gt; <span style="color: #d33682; font-style: italic;">float</span>:
+   <span style="color: #859900; font-weight: bold; font-style: italic;">return</span> I0*np.exp(-<span style="color: #6c71c4; font-weight: bold;">1.0</span>*R2*tau)
 
-def C2(R2_protein,R2_free):
-   return (R2_protein - R2_free) / R2_protein
+<span style="color: #859900; font-weight: bold; font-style: italic;">def</span> <span style="color: #b58900;">C2</span>(R2_protein,R2_free):
+   <span style="color: #859900; font-weight: bold; font-style: italic;">return</span> (R2_protein - R2_free) / R2_protein
 
-# setup parameters
-R2_protein = 10.0 # s-1
-R2_free = 2.0 # s-1
-R2_comp = 5.0 # s-1
-tau_long = 0.240 # s
-tau_short = 0.080 # s
-I0 = 1.0
+<span style="color: #96A7A9; font-style: italic;"># </span><span style="color: #96A7A9; font-style: italic;">setup parameters</span>
+<span style="color: #268bd2;">R2_protein</span> = <span style="color: #6c71c4; font-weight: bold;">10.0</span> <span style="color: #96A7A9; font-style: italic;"># </span><span style="color: #96A7A9; font-style: italic;">s-1</span>
+<span style="color: #268bd2;">R2_free</span> = <span style="color: #6c71c4; font-weight: bold;">2.0</span> <span style="color: #96A7A9; font-style: italic;"># </span><span style="color: #96A7A9; font-style: italic;">s-1</span>
+<span style="color: #268bd2;">R2_comp</span> = <span style="color: #6c71c4; font-weight: bold;">5.0</span> <span style="color: #96A7A9; font-style: italic;"># </span><span style="color: #96A7A9; font-style: italic;">s-1</span>
+<span style="color: #268bd2;">tau_long</span> = <span style="color: #6c71c4; font-weight: bold;">0.240</span> <span style="color: #96A7A9; font-style: italic;"># </span><span style="color: #96A7A9; font-style: italic;">s</span>
+<span style="color: #268bd2;">tau_short</span> = <span style="color: #6c71c4; font-weight: bold;">0.080</span> <span style="color: #96A7A9; font-style: italic;"># </span><span style="color: #96A7A9; font-style: italic;">s</span>
+<span style="color: #268bd2;">I0</span> = <span style="color: #6c71c4; font-weight: bold;">1.0</span>
 
-I_free_short = I(I0,R2_free,tau_short)
-I_free_long = I(I0,R2_free,tau_long)
-I_protein_short = I(I0,R2_protein,tau_short)
-I_protein_long = I(I0,R2_protein,tau_long)
-I_comp_short = I(I0,R2_comp,tau_short)
-I_comp_long = I(I0,R2_comp,tau_long)
+<span style="color: #268bd2;">I_free_short</span> = I(I0,R2_free,tau_short)
+<span style="color: #268bd2;">I_free_long</span> = I(I0,R2_free,tau_long)
+<span style="color: #268bd2;">I_protein_short</span> = I(I0,R2_protein,tau_short)
+<span style="color: #268bd2;">I_protein_long</span> = I(I0,R2_protein,tau_long)
+<span style="color: #268bd2;">I_comp_short</span> = I(I0,R2_comp,tau_short)
+<span style="color: #268bd2;">I_comp_long</span> = I(I0,R2_comp,tau_long)
 
-peak_tau_short_free = ng.linesh.sim_NDregion((50,),['l'],[[(25,R2_free/np.pi)]],[I_free_short])
-peak_tau_long_free = ng.linesh.sim_NDregion((50,),['l'],[[(25,R2_free/np.pi)]],[I_free_long])
-peak_tau_short_protein = ng.linesh.sim_NDregion((50,),['l'],[[(25,R2_protein/np.pi)]],[I_protein_short])
-peak_tau_long_protein = ng.linesh.sim_NDregion((50,),['l'],[[(25,R2_protein/np.pi)]],[I_protein_long])
-peak_tau_short_comp = ng.linesh.sim_NDregion((50,),['l'],[[(25,R2_comp/np.pi)]],[I_comp_short])
-peak_tau_long_comp = ng.linesh.sim_NDregion((50,),['l'],[[(25,R2_comp/np.pi)]],[I_comp_long])
+<span style="color: #268bd2;">peak_tau_short_free</span> = ng.linesh.sim_NDregion((<span style="color: #6c71c4; font-weight: bold;">50</span>,),[<span style="color: #2aa198;">'l'</span>],[[(<span style="color: #6c71c4; font-weight: bold;">25</span>,R2_free/np.pi)]],[I_free_short])
+<span style="color: #268bd2;">peak_tau_long_free</span> = ng.linesh.sim_NDregion((<span style="color: #6c71c4; font-weight: bold;">50</span>,),[<span style="color: #2aa198;">'l'</span>],[[(<span style="color: #6c71c4; font-weight: bold;">25</span>,R2_free/np.pi)]],[I_free_long])
+<span style="color: #268bd2;">peak_tau_short_protein</span> = ng.linesh.sim_NDregion((<span style="color: #6c71c4; font-weight: bold;">50</span>,),[<span style="color: #2aa198;">'l'</span>],[[(<span style="color: #6c71c4; font-weight: bold;">25</span>,R2_protein/np.pi)]],[I_protein_short])
+<span style="color: #268bd2;">peak_tau_long_protein</span> = ng.linesh.sim_NDregion((<span style="color: #6c71c4; font-weight: bold;">50</span>,),[<span style="color: #2aa198;">'l'</span>],[[(<span style="color: #6c71c4; font-weight: bold;">25</span>,R2_protein/np.pi)]],[I_protein_long])
+<span style="color: #268bd2;">peak_tau_short_comp</span> = ng.linesh.sim_NDregion((<span style="color: #6c71c4; font-weight: bold;">50</span>,),[<span style="color: #2aa198;">'l'</span>],[[(<span style="color: #6c71c4; font-weight: bold;">25</span>,R2_comp/np.pi)]],[I_comp_short])
+<span style="color: #268bd2;">peak_tau_long_comp</span> = ng.linesh.sim_NDregion((<span style="color: #6c71c4; font-weight: bold;">50</span>,),[<span style="color: #2aa198;">'l'</span>],[[(<span style="color: #6c71c4; font-weight: bold;">25</span>,R2_comp/np.pi)]],[I_comp_long])
 
-contrast_R2 = C2(R2_protein,R2_free)
-contrast_R2_text = r"$\frac{%.1f-%.1f}{%.1f}={%.1f}$"%(R2_protein,R2_free,R2_protein,contrast_R2)
-ratio_protein = np.log(I_protein_long / I_protein_short)
-ratio_free = np.log(I_free_long / I_free_short)
-contrast_ratio = C2(ratio_protein,ratio_free)
+<span style="color: #268bd2;">contrast_R2</span> = C2(R2_protein,R2_free)
+<span style="color: #268bd2;">contrast_R2_text</span> = r<span style="color: #2aa198;">"$\frac{%.1f-%.1f}{%.1f}={%.1f}$"</span>%(R2_protein,R2_free,R2_protein,contrast_R2)
+<span style="color: #268bd2;">ratio_protein</span> = np.log(I_protein_long / I_protein_short)
+<span style="color: #268bd2;">ratio_free</span> = np.log(I_free_long / I_free_short)
+<span style="color: #268bd2;">contrast_ratio</span> = C2(ratio_protein,ratio_free)
 
-contrast_ratio_text = r"$I_{80ms,free}=%.3f$"%(I_free_short) + "\n"
-contrast_ratio_text += r"$I_{240ms,free}=%.3f$"%(I_free_long) + "\n"
-contrast_ratio_text += r"$I_{80ms,protein}=%.3f$"%(I_protein_short) + "\n"
-contrast_ratio_text += r"$I_{240ms,protein}=%.3f$"%(I_protein_long) + "\n"
-contrast_ratio_text += "Ratio method\n"
-contrast_ratio_text += r"$\frac{%.3f-%.3f}{%.3f}={%.3f}$"%(ratio_protein,ratio_free,ratio_protein,contrast_ratio)
-contrast_ratio_text += "\n"+r"$R_2$ method"+"\n"
-contrast_ratio_text += contrast_R2_text
-bbox = dict(boxstyle="round",
-	    ec="g",
-	    fc="g",
-	    alpha=0.5)
-bbox_caption = dict(boxstyle="round",
-	    ec="b",
-	    fc="b",
-	    alpha=0.5)
+<span style="color: #268bd2;">contrast_ratio_text</span> = r<span style="color: #2aa198;">"$I_{80ms,free}=%.3f$"</span>%(I_free_short) + <span style="color: #2aa198;">"\n"</span>
+<span style="color: #268bd2;">contrast_ratio_text</span> += r<span style="color: #2aa198;">"$I_{240ms,free}=%.3f$"</span>%(I_free_long) + <span style="color: #2aa198;">"\n"</span>
+<span style="color: #268bd2;">contrast_ratio_text</span> += r<span style="color: #2aa198;">"$I_{80ms,protein}=%.3f$"</span>%(I_protein_short) + <span style="color: #2aa198;">"\n"</span>
+<span style="color: #268bd2;">contrast_ratio_text</span> += r<span style="color: #2aa198;">"$I_{240ms,protein}=%.3f$"</span>%(I_protein_long) + <span style="color: #2aa198;">"\n"</span>
+<span style="color: #268bd2;">contrast_ratio_text</span> += <span style="color: #2aa198;">"Ratio method\n"</span>
+<span style="color: #268bd2;">contrast_ratio_text</span> += r<span style="color: #2aa198;">"$\frac{%.3f-%.3f}{%.3f}={%.3f}$"</span>%(ratio_protein,ratio_free,ratio_protein,contrast_ratio)
+<span style="color: #268bd2;">contrast_ratio_text</span> += <span style="color: #2aa198;">"\n"</span>+r<span style="color: #2aa198;">"$R_2$ method"</span>+<span style="color: #2aa198;">"\n"</span>
+<span style="color: #268bd2;">contrast_ratio_text</span> += contrast_R2_text
+<span style="color: #268bd2;">bbox</span> = <span style="color: #d33682; font-style: italic;">dict</span>(boxstyle=<span style="color: #2aa198;">"round"</span>,
+            ec=<span style="color: #2aa198;">"g"</span>,
+            fc=<span style="color: #2aa198;">"g"</span>,
+            alpha=<span style="color: #6c71c4; font-weight: bold;">0.5</span>)
+bbox_caption = <span style="color: #d33682; font-style: italic;">dict</span>(boxstyle=<span style="color: #2aa198;">"round"</span>,
+            ec=<span style="color: #2aa198;">"b"</span>,
+            fc=<span style="color: #2aa198;">"b"</span>,
+            alpha=<span style="color: #6c71c4; font-weight: bold;">0.5</span>)
 
-# make plot
-fig, (ax1,ax2,ax3) = plt.subplots(1,3, figsize=(10,4))
-long_dict = dict(linestyle="-",color="r",alpha=1.0,linewidth=2)
-short_dict = dict(linestyle="--",color="k",alpha=0.5,linewidth=1)
-ax1.plot(peak_tau_short_free,label=f"{tau_short}",**short_dict)
-ax1.plot(peak_tau_long_free,label=f"{tau_long}",**long_dict)
-ax2.plot(peak_tau_short_protein,label=f"{tau_short}", **short_dict)
-ax2.plot(peak_tau_long_protein,label=f"{tau_long}", **long_dict)
-ax3.plot(peak_tau_short_comp,label=f"{tau_short}", **short_dict)
-ax3.plot(peak_tau_long_comp,label=f"{tau_long}", **long_dict)
-ax1.text(0.0,0.3,"full signal",transform=ax1.transAxes, bbox=bbox)
-ax2.text(0.0,0.3,"signal attenuated",transform=ax2.transAxes, bbox=bbox)
-ax3.text(0.0,0.3,"signal recovered",transform=ax3.transAxes, bbox=bbox)
-ax2.text(0.0,0.5,contrast_ratio_text,
-	 transform=ax2.transAxes,
-	 bbox=bbox_caption, color="white", fontsize="x-small")
-for ax in [ax1,ax2,ax3]:
-    ax.set_ylim(0,1)
-    ax.legend(title=r"$T_2$ filter time (s)")
-    ax.axis("off")
-ax1.set_title("Reporter only")
-ax2.set_title("Reporter + protein")
-ax3.set_title("Reporter + protein + competitor")
-plt.suptitle(r"Contrast $(C_2)$ = "+f"{contrast_R2:.1f}")
-fname = "../static/contrast.png"
+<span style="color: #96A7A9; font-style: italic;"># </span><span style="color: #96A7A9; font-style: italic;">make plot</span>
+fig, (<span style="color: #268bd2;">ax1</span>,<span style="color: #268bd2;">ax2</span>,<span style="color: #268bd2;">ax3</span>) = plt.subplots(<span style="color: #6c71c4; font-weight: bold;">1</span>,<span style="color: #6c71c4; font-weight: bold;">3</span>, figsize=(<span style="color: #6c71c4; font-weight: bold;">10</span>,<span style="color: #6c71c4; font-weight: bold;">4</span>))
+long_dict = <span style="color: #d33682; font-style: italic;">dict</span>(linestyle=<span style="color: #2aa198;">"-"</span>,color=<span style="color: #2aa198;">"r"</span>,alpha=<span style="color: #6c71c4; font-weight: bold;">1.0</span>,linewidth=<span style="color: #6c71c4; font-weight: bold;">2</span>)
+short_dict = <span style="color: #d33682; font-style: italic;">dict</span>(linestyle=<span style="color: #2aa198;">"--"</span>,color=<span style="color: #2aa198;">"k"</span>,alpha=<span style="color: #6c71c4; font-weight: bold;">0.5</span>,linewidth=<span style="color: #6c71c4; font-weight: bold;">1</span>)
+ax1.plot(peak_tau_short_free,label=f<span style="color: #2aa198;">"</span>{tau_short}<span style="color: #2aa198;">"</span>,**short_dict)
+ax1.plot(peak_tau_long_free,label=f<span style="color: #2aa198;">"</span>{tau_long}<span style="color: #2aa198;">"</span>,**long_dict)
+ax2.plot(peak_tau_short_protein,label=f<span style="color: #2aa198;">"</span>{tau_short}<span style="color: #2aa198;">"</span>, **short_dict)
+ax2.plot(peak_tau_long_protein,label=f<span style="color: #2aa198;">"</span>{tau_long}<span style="color: #2aa198;">"</span>, **long_dict)
+ax3.plot(peak_tau_short_comp,label=f<span style="color: #2aa198;">"</span>{tau_short}<span style="color: #2aa198;">"</span>, **short_dict)
+ax3.plot(peak_tau_long_comp,label=f<span style="color: #2aa198;">"</span>{tau_long}<span style="color: #2aa198;">"</span>, **long_dict)
+ax1.text(<span style="color: #6c71c4; font-weight: bold;">0.0</span>,<span style="color: #6c71c4; font-weight: bold;">0.3</span>,<span style="color: #2aa198;">"full signal"</span>,transform=ax1.transAxes, bbox=bbox)
+ax2.text(<span style="color: #6c71c4; font-weight: bold;">0.0</span>,<span style="color: #6c71c4; font-weight: bold;">0.3</span>,<span style="color: #2aa198;">"signal attenuated"</span>,transform=ax2.transAxes, bbox=bbox)
+ax3.text(<span style="color: #6c71c4; font-weight: bold;">0.0</span>,<span style="color: #6c71c4; font-weight: bold;">0.3</span>,<span style="color: #2aa198;">"signal recovered"</span>,transform=ax3.transAxes, bbox=bbox)
+ax2.text(<span style="color: #6c71c4; font-weight: bold;">0.0</span>,<span style="color: #6c71c4; font-weight: bold;">0.5</span>,contrast_ratio_text,
+         transform=ax2.transAxes,
+         bbox=bbox_caption, color=<span style="color: #2aa198;">"white"</span>, fontsize=<span style="color: #2aa198;">"x-small"</span>)
+<span style="color: #859900; font-weight: bold; font-style: italic;">for</span> ax <span style="color: #859900; font-weight: bold; font-style: italic;">in</span> [ax1,ax2,ax3]:
+    ax.set_ylim(<span style="color: #6c71c4; font-weight: bold;">0</span>,<span style="color: #6c71c4; font-weight: bold;">1</span>)
+    ax.legend(title=r<span style="color: #2aa198;">"$T_2$ filter time (s)"</span>)
+    ax.axis(<span style="color: #2aa198;">"off"</span>)
+ax1.set_title(<span style="color: #2aa198;">"Reporter only"</span>)
+ax2.set_title(<span style="color: #2aa198;">"Reporter + protein"</span>)
+ax3.set_title(<span style="color: #2aa198;">"Reporter + protein + competitor"</span>)
+plt.suptitle(r<span style="color: #2aa198;">"Contrast $(C_2)$ = "</span>+f<span style="color: #2aa198;">"</span>{contrast_R2:.1f}<span style="color: #2aa198;">"</span>)
+fname = <span style="color: #2aa198;">"../static/contrast.png"</span>
 plt.tight_layout()
 plt.savefig(fname)
-return fname
+<span style="color: #859900; font-weight: bold; font-style: italic;">return</span> fname
 </pre>
 </div>
 
 
-<figure id="orgb1526a3">
+<figure id="org11aa342">
 <img src="../static/contrast.png" alt="contrast.png">
 
 </figure>
 
 <hr>
-<div id="outline-container-orgb7d2930" class="outline-2">
-<h2 id="orgb7d2930">Theory</h2>
-<div class="outline-text-2" id="text-orgb7d2930">
+<div id="outline-container-org8122d99" class="outline-2">
+<h2 id="org8122d99">Theory</h2>
+<div class="outline-text-2" id="text-org8122d99">
 </div>
-<div id="outline-container-org608d10d" class="outline-3">
-<h3 id="org608d10d">Simple binding model</h3>
-<div class="outline-text-3" id="text-org608d10d">
+<div id="outline-container-orga877662" class="outline-3">
+<h3 id="orga877662">Simple binding model</h3>
+<div class="outline-text-3" id="text-orga877662">
 <p>
 In the absence of a competitor the fraction of bound reporter is calculated using the following logic.
 </p>
@@ -254,68 +254,68 @@ In this case, a good assay could be developed by selecting 50 μM reporter and 0
 
 <button type="button" class="collapsible">Show code</button>
 <div class="org-src-container">
-<pre class="src src-python">import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import matplotlib
-matplotlib.use('Agg')
+<pre class="src src-python"><span style="color: #859900; font-weight: bold; font-style: italic;">import</span> numpy <span style="color: #859900; font-weight: bold; font-style: italic;">as</span> np
+<span style="color: #859900; font-weight: bold; font-style: italic;">import</span> pandas <span style="color: #859900; font-weight: bold; font-style: italic;">as</span> pd
+<span style="color: #859900; font-weight: bold; font-style: italic;">import</span> matplotlib.pyplot <span style="color: #859900; font-weight: bold; font-style: italic;">as</span> plt
+<span style="color: #859900; font-weight: bold; font-style: italic;">import</span> matplotlib
+matplotlib.use(<span style="color: #2aa198;">'Agg'</span>)
 
-def f0(Pt: float, Lt: float, Kd: float) -&gt; float:
-    """ calculate fraction of bound ligand for 1:1 binding model
+<span style="color: #859900; font-weight: bold; font-style: italic;">def</span> <span style="color: #b58900;">f0</span>(Pt: <span style="color: #d33682; font-style: italic;">float</span>, Lt: <span style="color: #d33682; font-style: italic;">float</span>, Kd: <span style="color: #d33682; font-style: italic;">float</span>) -&gt; <span style="color: #d33682; font-style: italic;">float</span>:
+    <span style="color: #35a69c; font-style: italic;">""" calculate fraction of bound ligand for 1:1 binding model</span>
 
-	Parameters
-	----------
-	Pt : float
-	    total concentration of protein (M)
-	Lt : float
-	    total concentration of ligand (M)
-	Kd : float
-	    dissociation constant (M)
+<span style="color: #35a69c; font-style: italic;">        Parameters</span>
+<span style="color: #35a69c; font-style: italic;">        ----------</span>
+<span style="color: #35a69c; font-style: italic;">        Pt : float</span>
+<span style="color: #35a69c; font-style: italic;">            total concentration of protein (M)</span>
+<span style="color: #35a69c; font-style: italic;">        Lt : float</span>
+<span style="color: #35a69c; font-style: italic;">            total concentration of ligand (M)</span>
+<span style="color: #35a69c; font-style: italic;">        Kd : float</span>
+<span style="color: #35a69c; font-style: italic;">            dissociation constant (M)</span>
 
-	Returns
-	-------
-	f : float
-	    fraction of ligand bound to protein
+<span style="color: #35a69c; font-style: italic;">        Returns</span>
+<span style="color: #35a69c; font-style: italic;">        -------</span>
+<span style="color: #35a69c; font-style: italic;">        f : float</span>
+<span style="color: #35a69c; font-style: italic;">            fraction of ligand bound to protein</span>
 
-    """
-    a = 1.0
-    b = -1.0*(Pt+Lt+Kd)
-    c = Pt*Lt
-    return (-b-np.sqrt(b**2-4*a*c))/(2*Lt)
+<span style="color: #35a69c; font-style: italic;">    """</span>
+    a = <span style="color: #6c71c4; font-weight: bold;">1.0</span>
+    <span style="color: #268bd2;">b</span> = -<span style="color: #6c71c4; font-weight: bold;">1.0</span>*(Pt+Lt+Kd)
+    <span style="color: #268bd2;">c</span> = Pt*Lt
+    <span style="color: #859900; font-weight: bold; font-style: italic;">return</span> (-b-np.sqrt(b**<span style="color: #6c71c4; font-weight: bold;">2</span>-<span style="color: #6c71c4; font-weight: bold;">4</span>*a*c))/(<span style="color: #6c71c4; font-weight: bold;">2</span>*Lt)
 
-Pt = [0.125,0.250,0.500,1.000]
-Lt = [5,10,25,50,100]
-Kd = 145.0
-fs = [["Protein","Reporter","Fraction"],]
-for p in Pt:
-    for l in Lt:
-	f = f0(p,l,Kd)
-	fs.append([p,l,f])
-df = pd.DataFrame(fs[1:],columns=fs[0])
-for name, group in df.groupby("Protein"):
-    plt.plot(group.Reporter, group.Fraction,"o-",label=f"{name:.2f}")
+<span style="color: #268bd2;">Pt</span> = [<span style="color: #6c71c4; font-weight: bold;">0.125</span>,<span style="color: #6c71c4; font-weight: bold;">0.250</span>,<span style="color: #6c71c4; font-weight: bold;">0.500</span>,<span style="color: #6c71c4; font-weight: bold;">1.000</span>]
+<span style="color: #268bd2;">Lt</span> = [<span style="color: #6c71c4; font-weight: bold;">5</span>,<span style="color: #6c71c4; font-weight: bold;">10</span>,<span style="color: #6c71c4; font-weight: bold;">25</span>,<span style="color: #6c71c4; font-weight: bold;">50</span>,<span style="color: #6c71c4; font-weight: bold;">100</span>]
+<span style="color: #268bd2;">Kd</span> = <span style="color: #6c71c4; font-weight: bold;">145.0</span>
+<span style="color: #268bd2;">fs</span> = [[<span style="color: #2aa198;">"Protein"</span>,<span style="color: #2aa198;">"Reporter"</span>,<span style="color: #2aa198;">"Fraction"</span>],]
+<span style="color: #859900; font-weight: bold; font-style: italic;">for</span> p <span style="color: #859900; font-weight: bold; font-style: italic;">in</span> <span style="color: #268bd2;">Pt</span>:
+    <span style="color: #859900; font-weight: bold; font-style: italic;">for</span> l <span style="color: #859900; font-weight: bold; font-style: italic;">in</span> Lt:
+        f = f0(p,l,Kd)
+        fs.append([p,l,f])
+<span style="color: #268bd2;">df</span> = pd.DataFrame(fs[<span style="color: #6c71c4; font-weight: bold;">1</span>:],columns=fs[<span style="color: #6c71c4; font-weight: bold;">0</span>])
+<span style="color: #859900; font-weight: bold; font-style: italic;">for</span> name, group <span style="color: #859900; font-weight: bold; font-style: italic;">in</span> df.groupby(<span style="color: #2aa198;">"Protein"</span>):
+    plt.plot(group.Reporter, group.Fraction,<span style="color: #2aa198;">"o-"</span>,label=f<span style="color: #2aa198;">"</span>{name:.2f}<span style="color: #2aa198;">"</span>)
 
-plt.legend(title="[Protein] - μM")
-plt.xlabel("[Reporter] - μM")
-plt.ylabel(r"fraction of bound reporter - $f_0$")
-plt.title("Reporter 19 ($K_d=145\pm29$ μM) from Vieira de Castro and Ciulli (2019)")
-fname = "../static/fraction_bound.png"
+plt.legend(title=<span style="color: #2aa198;">"[Protein] - &#956;M"</span>)
+plt.xlabel(<span style="color: #2aa198;">"[Reporter] - &#956;M"</span>)
+plt.ylabel(r<span style="color: #2aa198;">"fraction of bound reporter - $f_0$"</span>)
+plt.title(<span style="color: #2aa198;">"Reporter 19 ($K_d=145\pm29$ &#956;M) from Vieira de Castro and Ciulli (2019)"</span>)
+fname = <span style="color: #2aa198;">"../static/fraction_bound.png"</span>
 plt.savefig(fname)
-return fname
+<span style="color: #859900; font-weight: bold; font-style: italic;">return</span> fname
 </pre>
 </div>
 
 
-<figure id="orgde06036">
+<figure id="org651865b">
 <img src="../static/fraction_bound.png" alt="fraction_bound.png">
 
 </figure>
 </div>
 </div>
 
-<div id="outline-container-org4fdb611" class="outline-3">
-<h3 id="org4fdb611">IC50</h3>
-<div class="outline-text-3" id="text-org4fdb611">
+<div id="outline-container-org2163618" class="outline-3">
+<h3 id="org2163618">IC50</h3>
+<div class="outline-text-3" id="text-org2163618">
 <p>
 This is defined as the total competitor concentration (i.e. \([I]+[PI]\) or free competitor + bound competitor, resp) required to reduce the fraction of bound reporter ligand by 50% (\(f=f_0/2\)).
 </p>
@@ -333,67 +333,67 @@ NMR based reporter assays have the advantage of being sensitive to a wide range 
 
 <button type="button" class="collapsible">Show code</button>
 <div class="org-src-container">
-<pre class="src src-python">from typing import Union
-import numpy as np
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
+<pre class="src src-python"><span style="color: #859900; font-weight: bold; font-style: italic;">from</span> typing <span style="color: #859900; font-weight: bold; font-style: italic;">import</span> Union
+<span style="color: #859900; font-weight: bold; font-style: italic;">import</span> numpy <span style="color: #859900; font-weight: bold; font-style: italic;">as</span> np
+<span style="color: #859900; font-weight: bold; font-style: italic;">import</span> matplotlib
+matplotlib.use(<span style="color: #2aa198;">'Agg'</span>)
+<span style="color: #859900; font-weight: bold; font-style: italic;">import</span> matplotlib.pyplot <span style="color: #859900; font-weight: bold; font-style: italic;">as</span> plt
 
-def calcIC50(Ki: Union[float, np.array], Kd: float,f0: float, L0: float) -&gt; Union[float, np.array]:
-    """ calculate IC50 value
+<span style="color: #859900; font-weight: bold; font-style: italic;">def</span> <span style="color: #b58900;">calcIC50</span>(Ki: Union[<span style="color: #d33682; font-style: italic;">float</span>, np.array], Kd: <span style="color: #d33682; font-style: italic;">float</span>,f0: <span style="color: #d33682; font-style: italic;">float</span>, L0: <span style="color: #d33682; font-style: italic;">float</span>) -&gt; Union[<span style="color: #d33682; font-style: italic;">float</span>, np.array]:
+    <span style="color: #35a69c; font-style: italic;">""" calculate IC50 value</span>
 
-	Parameters
-	----------
-	Ki : float | np.array
-	    dissociation constant of competitor (M)
-	Kd : float
-	    dissociation constant of reporter (M)
-	f0 : float
-	    initial bound fraction of reporter
-	L0 : float
-	    reporter concentration in (M)
+<span style="color: #35a69c; font-style: italic;">        Parameters</span>
+<span style="color: #35a69c; font-style: italic;">        ----------</span>
+<span style="color: #35a69c; font-style: italic;">        Ki : float | np.array</span>
+<span style="color: #35a69c; font-style: italic;">            dissociation constant of competitor (M)</span>
+<span style="color: #35a69c; font-style: italic;">        Kd : float</span>
+<span style="color: #35a69c; font-style: italic;">            dissociation constant of reporter (M)</span>
+<span style="color: #35a69c; font-style: italic;">        f0 : float</span>
+<span style="color: #35a69c; font-style: italic;">            initial bound fraction of reporter</span>
+<span style="color: #35a69c; font-style: italic;">        L0 : float</span>
+<span style="color: #35a69c; font-style: italic;">            reporter concentration in (M)</span>
 
-	Returns
-	-------
-	ic50 : float | np.array
-	    concentration of competitor at which 50% displacement is achieved
-	    i.e. f = f0/2
+<span style="color: #35a69c; font-style: italic;">        Returns</span>
+<span style="color: #35a69c; font-style: italic;">        -------</span>
+<span style="color: #35a69c; font-style: italic;">        ic50 : float | np.array</span>
+<span style="color: #35a69c; font-style: italic;">            concentration of competitor at which 50% displacement is achieved</span>
+<span style="color: #35a69c; font-style: italic;">            i.e. f = f0/2</span>
 
-    """
-    ic50 = ((f0*Kd)/((1.0-f0)*(2.0-f0)) + (f0*L0)/2.0) * ((Ki*(2.0-f0))/(Kd*f0)+1.0)
-    return ic50
+<span style="color: #35a69c; font-style: italic;">    """</span>
+    <span style="color: #268bd2;">ic50</span> = ((f0*Kd)/((<span style="color: #6c71c4; font-weight: bold;">1.0</span>-f0)*(<span style="color: #6c71c4; font-weight: bold;">2.0</span>-f0)) + (f0*L0)/<span style="color: #6c71c4; font-weight: bold;">2.0</span>) * ((Ki*(<span style="color: #6c71c4; font-weight: bold;">2.0</span>-f0))/(Kd*f0)+<span style="color: #6c71c4; font-weight: bold;">1.0</span>)
+    <span style="color: #859900; font-weight: bold; font-style: italic;">return</span> ic50
 
-Kd = 50e-6 # 50 μM
-Ki = np.logspace(-9,-3)
-L0 = 50e-6 # reporter concentration
-f0s = [0.005,0.05,0.5] # fraction of bound ligand
-for f0 in f0s:
+<span style="color: #268bd2;">Kd</span> = 50e-<span style="color: #6c71c4; font-weight: bold;">6</span> <span style="color: #96A7A9; font-style: italic;"># </span><span style="color: #96A7A9; font-style: italic;">50 &#956;M</span>
+<span style="color: #268bd2;">Ki</span> = np.logspace(-<span style="color: #6c71c4; font-weight: bold;">9</span>,-<span style="color: #6c71c4; font-weight: bold;">3</span>)
+<span style="color: #268bd2;">L0</span> = 50e-<span style="color: #6c71c4; font-weight: bold;">6</span> <span style="color: #96A7A9; font-style: italic;"># </span><span style="color: #96A7A9; font-style: italic;">reporter concentration</span>
+<span style="color: #268bd2;">f0s</span> = [<span style="color: #6c71c4; font-weight: bold;">0.005</span>,<span style="color: #6c71c4; font-weight: bold;">0.05</span>,<span style="color: #6c71c4; font-weight: bold;">0.5</span>] <span style="color: #96A7A9; font-style: italic;"># </span><span style="color: #96A7A9; font-style: italic;">fraction of bound ligand</span>
+<span style="color: #859900; font-weight: bold; font-style: italic;">for</span> f0 <span style="color: #859900; font-weight: bold; font-style: italic;">in</span> <span style="color: #268bd2;">f0s</span>:
     ic50 = calcIC50(Ki,Kd,f0,L0)
-    plt.loglog(Ki,ic50,"o-",label=f"f0 = {f0}")
-plt.grid(linestyle="--",alpha=0.75)
-plt.ylabel("IC$_{50}$ (M)")
-plt.xlabel("K$_{i}$ (M)")
-plt.legend(title=f"Kd = {Kd*1e6:.1f} μM")
-fname = "../static/ic50.png"
+    plt.loglog(Ki,ic50,<span style="color: #2aa198;">"o-"</span>,label=f<span style="color: #2aa198;">"f0 = </span>{f0}<span style="color: #2aa198;">"</span>)
+plt.grid(linestyle=<span style="color: #2aa198;">"--"</span>,alpha=<span style="color: #6c71c4; font-weight: bold;">0.75</span>)
+plt.ylabel(<span style="color: #2aa198;">"IC$_{50}$ (M)"</span>)
+plt.xlabel(<span style="color: #2aa198;">"K$_{i}$ (M)"</span>)
+plt.legend(title=f<span style="color: #2aa198;">"Kd = </span>{Kd*1e6:.1f}<span style="color: #2aa198;"> &#956;M"</span>)
+fname = <span style="color: #2aa198;">"../static/ic50.png"</span>
 plt.savefig(fname)
-return fname
+<span style="color: #859900; font-weight: bold; font-style: italic;">return</span> fname
 </pre>
 </div>
 
 
-<figure id="org2184ed7">
+<figure id="org580150e">
 <img src="../static/ic50.png" alt="ic50.png">
 
 </figure>
 </div>
 </div>
 
-<div id="outline-container-org20d80d6" class="outline-3">
-<h3 id="org20d80d6">Competitive binding model</h3>
-<div class="outline-text-3" id="text-org20d80d6">
+<div id="outline-container-orgdddada4" class="outline-3">
+<h3 id="orgdddada4">Competitive binding model</h3>
+<div class="outline-text-3" id="text-orgdddada4">
 <p>
 An exact mathematical expression for competitive binding was defined by Wang (1994).
-For a simple 1:1 binding systems this involves solving a quadratic expression (see <a href="#org608d10d">Simple binding model</a>).
+For a simple 1:1 binding systems this involves solving a quadratic expression (see <a href="#orga877662">Simple binding model</a>).
 However, for a competitive binding system a cubic expression must be solved (see <a href="https://en.wikipedia.org/wiki/Cubic_equation">https://en.wikipedia.org/wiki/Cubic_equation</a>).
 </p>
 
@@ -513,100 +513,100 @@ For example, this means that for a  5 μM \(K_d\) reporter the upper limit for o
 
 <button type="button" class="collapsible">Show code</button>
 <div class="org-src-container">
-<pre class="src src-python">from typing import Union
-from cycler import cycler
-import numpy as np
-import matplotlib
-from matplotlib import cm
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
+<pre class="src src-python"><span style="color: #859900; font-weight: bold; font-style: italic;">from</span> typing <span style="color: #859900; font-weight: bold; font-style: italic;">import</span> Union
+<span style="color: #859900; font-weight: bold; font-style: italic;">from</span> cycler <span style="color: #859900; font-weight: bold; font-style: italic;">import</span> cycler
+<span style="color: #859900; font-weight: bold; font-style: italic;">import</span> numpy <span style="color: #859900; font-weight: bold; font-style: italic;">as</span> np
+<span style="color: #859900; font-weight: bold; font-style: italic;">import</span> matplotlib
+<span style="color: #859900; font-weight: bold; font-style: italic;">from</span> matplotlib <span style="color: #859900; font-weight: bold; font-style: italic;">import</span> cm
+matplotlib.use(<span style="color: #2aa198;">'Agg'</span>)
+<span style="color: #859900; font-weight: bold; font-style: italic;">import</span> matplotlib.pyplot <span style="color: #859900; font-weight: bold; font-style: italic;">as</span> plt
 
-def calcF(I: Union[float,np.array], Lt: float, Ki: float, Kd: float, Et: float) -&gt; Union[float, np.array]:
-    """ Calculate the fraction of bound reporter
+<span style="color: #859900; font-weight: bold; font-style: italic;">def</span> <span style="color: #b58900;">calcF</span>(I: Union[<span style="color: #d33682; font-style: italic;">float</span>,np.array], Lt: <span style="color: #d33682; font-style: italic;">float</span>, Ki: <span style="color: #d33682; font-style: italic;">float</span>, Kd: <span style="color: #d33682; font-style: italic;">float</span>, Et: <span style="color: #d33682; font-style: italic;">float</span>) -&gt; Union[<span style="color: #d33682; font-style: italic;">float</span>, np.array]:
+    <span style="color: #35a69c; font-style: italic;">""" Calculate the fraction of bound reporter</span>
 
-	Wang (1995) defined an exact analytical solution to competitive binding.
-	The following is a slight rearrangement of equation 14 to obtain the bound
-	fraction of ligand based on the unique physically meaningful root of the
-	cubic expression.
+<span style="color: #35a69c; font-style: italic;">        Wang (1995) defined an exact analytical solution to competitive binding.</span>
+<span style="color: #35a69c; font-style: italic;">        The following is a slight rearrangement of equation 14 to obtain the bound</span>
+<span style="color: #35a69c; font-style: italic;">        fraction of ligand based on the unique physically meaningful root of the</span>
+<span style="color: #35a69c; font-style: italic;">        cubic expression.</span>
 
-	Parameters
-	----------
-	I : float | np.array
-	    concentration of competitor in M
-	Lt : float
-	    total concentration of reporter `L_t` in M
-	Ki : float
-	    `K_i` for the competitor in M
-	Kd : float
-	    `K_d` for the reporter in M
-	Et : float
-	    total concentration of protein `E_t` in M
+<span style="color: #35a69c; font-style: italic;">        Parameters</span>
+<span style="color: #35a69c; font-style: italic;">        ----------</span>
+<span style="color: #35a69c; font-style: italic;">        I : float | np.array</span>
+<span style="color: #35a69c; font-style: italic;">            concentration of competitor in M</span>
+<span style="color: #35a69c; font-style: italic;">        Lt : float</span>
+<span style="color: #35a69c; font-style: italic;">            total concentration of reporter `L_t` in M</span>
+<span style="color: #35a69c; font-style: italic;">        Ki : float</span>
+<span style="color: #35a69c; font-style: italic;">            `K_i` for the competitor in M</span>
+<span style="color: #35a69c; font-style: italic;">        Kd : float</span>
+<span style="color: #35a69c; font-style: italic;">            `K_d` for the reporter in M</span>
+<span style="color: #35a69c; font-style: italic;">        Et : float</span>
+<span style="color: #35a69c; font-style: italic;">            total concentration of protein `E_t` in M</span>
 
-	Returns
-	-------
-	f : float | np.array
-	    fraction of reporter bound to protein in the presence of competitor
+<span style="color: #35a69c; font-style: italic;">        Returns</span>
+<span style="color: #35a69c; font-style: italic;">        -------</span>
+<span style="color: #35a69c; font-style: italic;">        f : float | np.array</span>
+<span style="color: #35a69c; font-style: italic;">            fraction of reporter bound to protein in the presence of competitor</span>
 
-    """
-    a = Kd + Ki + Lt + I + Et
-    b = (I-Et)*Kd + (Lt-Et)*Ki + Kd*Ki
-    c = -Kd*Ki*Et
-    theta = np.arccos((-2*a**3 + 9*a*b - 27*c)/(2*np.sqrt((a**2-3*b)**3)))
-    d = 2*np.sqrt((a**2-3*b))*np.cos(theta/3) - a
-    f = d / (3*Kd + d)
-    return f
+<span style="color: #35a69c; font-style: italic;">    """</span>
+    <span style="color: #268bd2;">a</span> = Kd + Ki + Lt + I + Et
+    <span style="color: #268bd2;">b</span> = (I-Et)*Kd + (Lt-Et)*Ki + Kd*Ki
+    <span style="color: #268bd2;">c</span> = -Kd*Ki*Et
+    <span style="color: #268bd2;">theta</span> = np.arccos((-<span style="color: #6c71c4; font-weight: bold;">2</span>*a**<span style="color: #6c71c4; font-weight: bold;">3</span> + <span style="color: #6c71c4; font-weight: bold;">9</span>*a*b - <span style="color: #6c71c4; font-weight: bold;">27</span>*c)/(<span style="color: #6c71c4; font-weight: bold;">2</span>*np.sqrt((a**<span style="color: #6c71c4; font-weight: bold;">2</span>-<span style="color: #6c71c4; font-weight: bold;">3</span>*b)**<span style="color: #6c71c4; font-weight: bold;">3</span>)))
+    <span style="color: #268bd2;">d</span> = <span style="color: #6c71c4; font-weight: bold;">2</span>*np.sqrt((a**<span style="color: #6c71c4; font-weight: bold;">2</span>-<span style="color: #6c71c4; font-weight: bold;">3</span>*b))*np.cos(theta/<span style="color: #6c71c4; font-weight: bold;">3</span>) - a
+    <span style="color: #268bd2;">f</span> = d / (<span style="color: #6c71c4; font-weight: bold;">3</span>*Kd + d)
+    <span style="color: #859900; font-weight: bold; font-style: italic;">return</span> f
 
-# some fancy colors
-cmap = cm.viridis
-len_cycle = 7
-c = np.linspace(0,1,len_cycle)
-custom_cycler = (cycler(color=[cmap(i) for i in c]))# +
-		 #cycler(lw=np.arange(len_cycle)+1))
+<span style="color: #96A7A9; font-style: italic;"># </span><span style="color: #96A7A9; font-style: italic;">some fancy colors</span>
+<span style="color: #268bd2;">cmap</span> = cm.viridis
+<span style="color: #268bd2;">len_cycle</span> = <span style="color: #6c71c4; font-weight: bold;">7</span>
+<span style="color: #268bd2;">c</span> = np.linspace(<span style="color: #6c71c4; font-weight: bold;">0</span>,<span style="color: #6c71c4; font-weight: bold;">1</span>,len_cycle)
+<span style="color: #268bd2;">custom_cycler</span> = (cycler(color=[cmap(i) <span style="color: #859900; font-weight: bold; font-style: italic;">for</span> i <span style="color: #859900; font-weight: bold; font-style: italic;">in</span> c]))<span style="color: #96A7A9; font-style: italic;"># </span><span style="color: #96A7A9; font-style: italic;">+</span>
+                 <span style="color: #96A7A9; font-style: italic;">#</span><span style="color: #96A7A9; font-style: italic;">cycler(lw=np.arange(len_cycle)+1))</span>
 
-# configure plot
-fig = plt.figure(figsize=(8,10))
-ax1 = fig.add_subplot(211)
-ax2 = fig.add_subplot(212)
+<span style="color: #96A7A9; font-style: italic;"># </span><span style="color: #96A7A9; font-style: italic;">configure plot</span>
+fig = plt.figure(figsize=(<span style="color: #6c71c4; font-weight: bold;">8</span>,<span style="color: #6c71c4; font-weight: bold;">10</span>))
+ax1 = fig.add_subplot(<span style="color: #6c71c4; font-weight: bold;">211</span>)
+ax2 = fig.add_subplot(<span style="color: #6c71c4; font-weight: bold;">212</span>)
 ax1.set_prop_cycle(custom_cycler)
 ax2.set_prop_cycle(custom_cycler)
 
-# set parameters
-Kis = np.logspace(-9,-3,len_cycle)
-Lt = 50e-6
-Kds = [5e-6,500e-6]
-Et = 1e-6
-I = np.logspace(-7,-1) # reporter concentration
+<span style="color: #96A7A9; font-style: italic;"># </span><span style="color: #96A7A9; font-style: italic;">set parameters</span>
+Kis = np.logspace(-<span style="color: #6c71c4; font-weight: bold;">9</span>,-<span style="color: #6c71c4; font-weight: bold;">3</span>,len_cycle)
+Lt = 50e-<span style="color: #6c71c4; font-weight: bold;">6</span>
+Kds = [5e-<span style="color: #6c71c4; font-weight: bold;">6</span>,500e-<span style="color: #6c71c4; font-weight: bold;">6</span>]
+Et = 1e-<span style="color: #6c71c4; font-weight: bold;">6</span>
+I = np.logspace(-<span style="color: #6c71c4; font-weight: bold;">7</span>,-<span style="color: #6c71c4; font-weight: bold;">1</span>) <span style="color: #96A7A9; font-style: italic;"># </span><span style="color: #96A7A9; font-style: italic;">reporter concentration</span>
 
-# calculate and plot
+<span style="color: #96A7A9; font-style: italic;"># </span><span style="color: #96A7A9; font-style: italic;">calculate and plot</span>
 axes = [ax1,ax2]
-for Kd,ax in zip(Kds,axes):
-    for Ki in Kis:
-	Fw = calcF(I,Lt,Ki,Kd,Et)
-	ax.semilogx(I,Fw,"o-",label=f"{Ki:.1E}")
+<span style="color: #859900; font-weight: bold; font-style: italic;">for</span> Kd,ax <span style="color: #859900; font-weight: bold; font-style: italic;">in</span> <span style="color: #d33682; font-style: italic;">zip</span>(Kds,axes):
+    <span style="color: #859900; font-weight: bold; font-style: italic;">for</span> Ki <span style="color: #859900; font-weight: bold; font-style: italic;">in</span> Kis:
+        Fw = calcF(I,Lt,Ki,Kd,Et)
+        ax.semilogx(I,Fw,<span style="color: #2aa198;">"o-"</span>,label=f<span style="color: #2aa198;">"</span>{Ki:.1E}<span style="color: #2aa198;">"</span>)
 
-    ax.grid(which='both',linestyle="--",alpha=0.75)
-    ax.set_ylabel("$f$")
-    ax.set_xlabel("[I] (M)")
-    ax.set_title(r"$K_d$"+f" = {Kd*1e6:.1f} μM"+r", $L_t$"+ f" = {Lt*1e6:.1f} μM, " + r"$E_t$ " + f"= {Et*1e6:.1f} μM")
-    ax.legend(title=r"$K_i$ (M)")
+    ax.grid(which=<span style="color: #2aa198;">'both'</span>,linestyle=<span style="color: #2aa198;">"--"</span>,alpha=<span style="color: #6c71c4; font-weight: bold;">0.75</span>)
+    ax.set_ylabel(<span style="color: #2aa198;">"$f$"</span>)
+    ax.set_xlabel(<span style="color: #2aa198;">"[I] (M)"</span>)
+    ax.set_title(r<span style="color: #2aa198;">"$K_d$"</span>+f<span style="color: #2aa198;">" = </span>{Kd*1e6:.1f}<span style="color: #2aa198;"> &#956;M"</span>+r<span style="color: #2aa198;">", $L_t$"</span>+ f<span style="color: #2aa198;">" = </span>{Lt*1e6:.1f}<span style="color: #2aa198;"> &#956;M, "</span> + r<span style="color: #2aa198;">"$E_t$ "</span> + f<span style="color: #2aa198;">"= </span>{Et*1e6:.1f}<span style="color: #2aa198;"> &#956;M"</span>)
+    ax.legend(title=r<span style="color: #2aa198;">"$K_i$ (M)"</span>)
 plt.tight_layout()
-fname = "../static/fraction_bound_2.png"
+fname = <span style="color: #2aa198;">"../static/fraction_bound_2.png"</span>
 plt.savefig(fname)
-return fname
+<span style="color: #859900; font-weight: bold; font-style: italic;">return</span> fname
 </pre>
 </div>
 
 
-<figure id="org9dd472a">
+<figure id="org870b7a5">
 <img src="../static/fraction_bound_2.png" alt="fraction_bound_2.png">
 
 </figure>
 </div>
 </div>
 
-<div id="outline-container-orgadc87b4" class="outline-3">
-<h3 id="orgadc87b4">Assay quality metrics</h3>
-<div class="outline-text-3" id="text-orgadc87b4">
+<div id="outline-container-org3e5e38d" class="outline-3">
+<h3 id="org3e5e38d">Assay quality metrics</h3>
+<div class="outline-text-3" id="text-org3e5e38d">
 <p>
 Viriera and Ciulli (2019) have described an assay quality metric, \(C_2\), or contrast which is the fractional decrease in signal intensity in the presence of protein.
 Larger \(C_2\) values are usually preferred as this improves the dynamic range of the assay.
@@ -645,13 +645,13 @@ Calculation of a reasonable \(Z'\) score would require that one includes \(>3\) 
 </div>
 </div>
 
-<div id="outline-container-org51fb966" class="outline-2">
-<h2 id="org51fb966">Practice</h2>
-<div class="outline-text-2" id="text-org51fb966">
+<div id="outline-container-org8532aba" class="outline-2">
+<h2 id="org8532aba">Practice</h2>
+<div class="outline-text-2" id="text-org8532aba">
 </div>
-<div id="outline-container-org66f950b" class="outline-3">
-<h3 id="org66f950b">\(^1H\) vs \(^{19}F\)</h3>
-<div class="outline-text-3" id="text-org66f950b">
+<div id="outline-container-org9d33d33" class="outline-3">
+<h3 id="org9d33d33">\(^1H\) vs \(^{19}F\)</h3>
+<div class="outline-text-3" id="text-org9d33d33">
 <p>
 The fluorine nucleus has advantages over proton for use as a reporter
 </p>
@@ -667,9 +667,9 @@ This means that high \(C_2\)  can be achieved relative to  \(^1H\) at a given co
 </div>
 </div>
 
-<div id="outline-container-org5207e3d" class="outline-3">
-<h3 id="org5207e3d">Conditions</h3>
-<div class="outline-text-3" id="text-org5207e3d">
+<div id="outline-container-org1da5fc0" class="outline-3">
+<h3 id="org1da5fc0">Conditions</h3>
+<div class="outline-text-3" id="text-org1da5fc0">
 <p>
 A good starting point is 1 μM protein and 50 μM reporter. However, there is no substitute for testing a few different protein and reporter concentrations to judge which provides the highest \(C_2\), \(Z'\) and \(\frac{S}{N}\) ratios. Vieira de Castro and Ciulli (2019) demonstrated this very clearly.
 It is also a good idea to test multiple reporters across a range of affinities.
@@ -678,9 +678,9 @@ As was shown by Vieira de Castro and Ciulli (2019) the optimal reporter affinity
 </div>
 </div>
 
-<div id="outline-container-orga9b72a0" class="outline-3">
-<h3 id="orga9b72a0">NMR experiments</h3>
-<div class="outline-text-3" id="text-orga9b72a0">
+<div id="outline-container-orgc5b0975" class="outline-3">
+<h3 id="orgc5b0975">NMR experiments</h3>
+<div class="outline-text-3" id="text-orgc5b0975">
 <ol class="org-ol">
 <li>T2 filtered experiments
 <ul class="org-ul">
@@ -692,9 +692,9 @@ As was shown by Vieira de Castro and Ciulli (2019) the optimal reporter affinity
 </div>
 </div>
 
-<div id="outline-container-orga3300ed" class="outline-2">
-<h2 id="orga3300ed">References</h2>
-<div class="outline-text-2" id="text-orga3300ed">
+<div id="outline-container-orgb06e151" class="outline-2">
+<h2 id="orgb06e151">References</h2>
+<div class="outline-text-2" id="text-orgb06e151">
 <ol class="org-ol">
 <li><a href="https://doi.org/10.1039/c8cc09790a">Spy vs. spy: selecting the best reporter for 19 F NMR competition experiments</a>; Guilherme Vieira de Castro  and  Alessio Ciulli</li>
 <li><a href="https://doi.org/10.1177/108705719900400206">A Simple Statistical Parameter for Use in Evaluation and Validation of High Throughput Screening Assays</a>; JH Zhang, TD Chung, KR Oldenburg</li>
@@ -705,9 +705,9 @@ As was shown by Vieira de Castro and Ciulli (2019) the optimal reporter affinity
 </div>
 </div>
 
-<div id="outline-container-org543cea8" class="outline-2">
-<h2 id="org543cea8">Appendix</h2>
-<div class="outline-text-2" id="text-org543cea8">
+<div id="outline-container-orgb9869d0" class="outline-2">
+<h2 id="orgb9869d0">Appendix</h2>
+<div class="outline-text-2" id="text-orgb9869d0">
 <p>
 The protein concentration required for a given bound fraction of ligand is described by the following relationship:
 </p>
@@ -718,18 +718,18 @@ P_0 = \frac{K_df_0}{1-f_0} + f_0L_0
 
 <button type="button" class="collapsible">Show code</button>
 <div class="org-src-container">
-<pre class="src src-python">import numpy as np
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-def P0(Kd,f0,L0):
-    return (Kd*f0)/(1-f0) + f0*L0
+<pre class="src src-python"><span style="color: #859900; font-weight: bold; font-style: italic;">import</span> numpy <span style="color: #859900; font-weight: bold; font-style: italic;">as</span> np
+<span style="color: #859900; font-weight: bold; font-style: italic;">import</span> matplotlib
+matplotlib.use(<span style="color: #2aa198;">'Agg'</span>)
+<span style="color: #859900; font-weight: bold; font-style: italic;">import</span> matplotlib.pyplot <span style="color: #859900; font-weight: bold; font-style: italic;">as</span> plt
+<span style="color: #859900; font-weight: bold; font-style: italic;">def</span> <span style="color: #b58900;">P0</span>(Kd,f0,L0):
+    <span style="color: #859900; font-weight: bold; font-style: italic;">return</span> (Kd*f0)/(<span style="color: #6c71c4; font-weight: bold;">1</span>-f0) + f0*L0
 
-Kd = np.array([10,100,1000])
-f0 = 0.05
-L0 = 10.0
-p0 = P0(Kd, f0, L0)
-return p0
+<span style="color: #268bd2;">Kd</span> = np.array([<span style="color: #6c71c4; font-weight: bold;">10</span>,<span style="color: #6c71c4; font-weight: bold;">100</span>,<span style="color: #6c71c4; font-weight: bold;">1000</span>])
+<span style="color: #268bd2;">f0</span> = <span style="color: #6c71c4; font-weight: bold;">0.05</span>
+<span style="color: #268bd2;">L0</span> = <span style="color: #6c71c4; font-weight: bold;">10.0</span>
+<span style="color: #268bd2;">p0</span> = P0(Kd, f0, L0)
+<span style="color: #859900; font-weight: bold; font-style: italic;">return</span> p0
 </pre>
 </div>
 
@@ -779,7 +779,7 @@ return p0
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Jacob P Brady (<a href="mailto:jacob.brady@protonmail.com">jacob.brady@protonmail.com</a>)</p><p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p><div id="updated">Updated: 2022-12-27 Tue 19:39</div>
+<p class="author">Author: Jacob P Brady (<a href="mailto:jacob.brady@protonmail.com">jacob.brady@protonmail.com</a>)</p><p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6)</p><div id="updated">Updated: 2022-12-28 Wed 11:43</div>
 </div>
 </body>
 </html>
