@@ -1,8 +1,9 @@
 # Makefile for mywebpage
 
-.PHONY: all publish publish_no_init
+.PHONY: all publish publish_no_init clean-touch
 
 all: clean publish
+clean-touch: clean touch
 
 publish: publish.el
 	@echo "Publishing... with current Emacs configurations."

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2022-12-27 Tue 19:25 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>README</title>
+<meta name="author" content="Jacob Brady" />
+<meta name="generator" content="Org Mode" />
+</head>
+<body>
+<div id="content" class="content">
+<header>
+<h1 class="title">README</h1>
+</header><nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgc749e98">1. How to build website</a></li>
+</ul>
+</div>
+</nav>
+
+<div id="outline-container-orgc749e98" class="outline-2">
+<h2 id="orgc749e98"><span class="section-number-2">1.</span> How to build website</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The following <code>Makefile</code> is used to build the webpage
+</p>
+
+<div class="org-src-container">
+<pre class="src src-make"># Makefile for mywebpage
+
+.PHONY: all publish publish_no_init clean-touch
+
+all: clean publish
+clean-touch: clean touch
+
+publish: publish.el
+	@echo "Publishing... with current Emacs configurations."
+	emacs --batch --load publish.el --funcall org-publish-all
+
+publish_no_init: publish.el
+	@echo "Publishing... with --no-init."
+	emacs --batch --no-init --load publish.el --funcall org-publish-all
+
+clean:
+	@echo "Cleaning up.."
+	@rm -rvf *.elc
+	@rm -rvf html
+	@rm -rvf ~/.org-timestamps/*
+
+touch:
+	@echo "Touching files..."
+	@touch *.org
+	@touch **/*.org
+	@touch **/*.png
+	@touch static/css/*.css
+</pre>
+</div>
+
+<p>
+To build run:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">make clean-touch
+make all
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Jacob Brady (<a href="mailto:jacob.brady@protonmail.com">jacob.brady@protonmail.com</a>)</p><p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p><div id="updated">Updated: 2022-12-27 Tue 19:24</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+#+TITLE: README
+#+AUTHOR: Jacob Brady
+
+* How to build website
+
+The following ~Makefile~ is used to build the webpage
+
+#+INCLUDE: "./Makefile" src make
+
+To build run:
+
+#+begin_src bash
+make clean-touch
+make all
+#+end_src
