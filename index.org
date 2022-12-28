@@ -4,7 +4,7 @@
 #+OPTIONS: num:nil toc:nil
 #+HTML_HEAD: <link rel="stylesheet" href="static/css/style.css">
 
-#+HTML: <div style="text-align: center"><a href="https://github.com/j-brady" target="_blank"><img src="static/GitHub-Mark-120px-plus.png" style="width: 48px;opacity: 0.5"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp<a href="mailto:jacob.brady@protonmail.com" target="_blank"><img src="static/email.png" style="width: 48px; opacity: 0.5"></a></div>
+#+HTML: <div style="text-align: center"><a href="https://github.com/j-brady" target="_blank"><img src="static/GitHub-Mark-120px-plus.png" style="width: 48px;opacity: 0.5"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp<a href="mailto:jacob.brady@protonmail.com" target="_blank"><img src="static/email.png" style="width: 48px; opacity: 0.5"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp<a href="mailto:jacob.brady@protonmail.com" target="_blank"><img src="static/LI-In-Bug.png" style="width: 48px; opacity: 0.5"></a></div>
 -------
 * Work
 I am a lab head at the Novartis Institutes for Biomedical Research in Cambridge MA. My lab specializes in fragment based drug discovery (FBDD) and biophysical characterization of  biomolecules and their interactions using Nuclear Magnetic Resonance (NMR). We integrate our NMR work with biochemical  and biophysical methods to guide drug discovery teams and drive medicinal chemistry efforts.
