@@ -11,6 +11,7 @@
         :base-directory "./"
         :base-extension "org"
         :publishing-directory "./html/"
+        :htmlized-source t
         :recursive t
         :publishing-function org-html-publish-to-html
         :headline-levels 4

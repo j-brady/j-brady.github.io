@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2022-12-28 Wed 12:40 -->
+<!-- 2024-03-27 Wed 21:08 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>How I built this website</title>
@@ -125,7 +125,7 @@ The Emacs-lisp code used to publish the web page via the make file.
         <span style="color: #96A7A9; font-style: italic;">;</span><span style="color: #96A7A9; font-style: italic;">:auto-preamble t</span>
         <span style="color: #d33682; font-style: italic;">:auto-sitemap</span> t                <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">Generate sitemap.org automagically...</span>
         <span style="color: #d33682; font-style: italic;">:sitemap-filename</span> <span style="color: #2aa198;">"sitemap.org"</span>  <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">... call it sitemap.org (it's the default)...</span>
-        <span style="color: #d33682; font-style: italic;">:sitemap-title</span> <span style="color: #2aa198;">"Sitemap"</span>         <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">... with title '</span><span style="color: #6c71c4; font-weight: bold; font-style: italic;">Sitemap</span><span style="color: #96A7A9; font-style: italic;">'.</span>
+        <span style="color: #d33682; font-style: italic;">:sitemap-title</span> <span style="color: #2aa198;">"Sitemap"</span>         <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">... with title 'Sitemap'.</span>
         <span style="color: #d33682; font-style: italic;">:email</span> <span style="color: #2aa198;">"jacob.brady@protonmail.com"</span>
         <span style="color: #d33682; font-style: italic;">:author</span> <span style="color: #2aa198;">"Jacob P Brady"</span>
         <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">HTML5</span>
@@ -176,7 +176,7 @@ Unfortunately, I had trouble getting the source code syntax highlighting to work
         <span style="color: #96A7A9; font-style: italic;">;</span><span style="color: #96A7A9; font-style: italic;">:auto-preamble t</span>
         <span style="color: #d33682; font-style: italic;">:auto-sitemap</span> t                <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">Generate sitemap.org automagically...</span>
         <span style="color: #d33682; font-style: italic;">:sitemap-filename</span> <span style="color: #2aa198;">"sitemap.org"</span>  <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">... call it sitemap.org (it's the default)...</span>
-        <span style="color: #d33682; font-style: italic;">:sitemap-title</span> <span style="color: #2aa198;">"Sitemap"</span>         <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">... with title '</span><span style="color: #6c71c4; font-weight: bold; font-style: italic;">Sitemap</span><span style="color: #96A7A9; font-style: italic;">'.</span>
+        <span style="color: #d33682; font-style: italic;">:sitemap-title</span> <span style="color: #2aa198;">"Sitemap"</span>         <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">... with title 'Sitemap'.</span>
         <span style="color: #d33682; font-style: italic;">:email</span> <span style="color: #2aa198;">"jacob.brady@protonmail.com"</span>
         <span style="color: #d33682; font-style: italic;">:author</span> <span style="color: #2aa198;">"Jacob P Brady"</span>
         <span style="color: #96A7A9; font-style: italic;">; </span><span style="color: #96A7A9; font-style: italic;">HTML5</span>
@@ -279,7 +279,7 @@ The custom CSS code used to style the page is included below. For the collapsibl
   <span style="color: #859900;">text-align</span>: center;
 }
 
-<span style="color: #96A7A9; font-style: italic;">/* </span><span style="color: #96A7A9; font-style: italic;">Larger than mobile screen</span><span style="color: #96A7A9; font-style: italic;"> */</span>
+<span style="color: #96A7A9; font-style: italic;">/* </span><span style="color: #96A7A9; font-style: italic;">Larger than mobile screen </span><span style="color: #96A7A9; font-style: italic;">*/</span>
 <span style="color: #d33682; font-style: italic;">@media</span> (min-width: 40.0rem) {
   <span style="color: #268bd2;">body </span>{
     <span style="color: #859900;">margin-left</span>: 12rem;
@@ -288,7 +288,7 @@ The custom CSS code used to style the page is included below. For the collapsibl
   }
 }
 
-<span style="color: #96A7A9; font-style: italic;">/* </span><span style="color: #96A7A9; font-style: italic;">Larger than tablet screen</span><span style="color: #96A7A9; font-style: italic;"> */</span>
+<span style="color: #96A7A9; font-style: italic;">/* </span><span style="color: #96A7A9; font-style: italic;">Larger than tablet screen </span><span style="color: #96A7A9; font-style: italic;">*/</span>
 <span style="color: #d33682; font-style: italic;">@media</span> (min-width: 80.0rem) {
   <span style="color: #268bd2;">body </span>{
     <span style="color: #859900;">margin-left</span>: 24rem;
@@ -297,7 +297,7 @@ The custom CSS code used to style the page is included below. For the collapsibl
   }
 }
 
-<span style="color: #96A7A9; font-style: italic;">/* </span><span style="color: #96A7A9; font-style: italic;">Larger than desktop screen</span><span style="color: #96A7A9; font-style: italic;"> */</span>
+<span style="color: #96A7A9; font-style: italic;">/* </span><span style="color: #96A7A9; font-style: italic;">Larger than desktop screen </span><span style="color: #96A7A9; font-style: italic;">*/</span>
 <span style="color: #d33682; font-style: italic;">@media</span> (min-width: 120.0rem) {
   <span style="color: #268bd2;">body </span>{
     <span style="color: #859900;">margin-left</span>: 32rem;
@@ -306,7 +306,7 @@ The custom CSS code used to style the page is included below. For the collapsibl
   }
 }
 
-<span style="color: #96A7A9; font-style: italic;">/* </span><span style="color: #96A7A9; font-style: italic;">Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover)</span><span style="color: #96A7A9; font-style: italic;"> */</span>
+<span style="color: #96A7A9; font-style: italic;">/* </span><span style="color: #96A7A9; font-style: italic;">Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) </span><span style="color: #96A7A9; font-style: italic;">*/</span>
 <span style="color: #268bd2;">.active, .collapsible:hover </span>{
   <span style="color: #859900;">background-color</span>: <span style="color: #000000; background-color: #ccc;">#ccc</span>;
 }
@@ -375,7 +375,7 @@ The following resources were extremely useful to me:
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Jacob P Brady (<a href="mailto:jacob.brady@protonmail.com">jacob.brady@protonmail.com</a>)</p><p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6)</p><div id="updated">Updated: 2022-12-28 Wed 12:40</div>
+<p class="author">Author: Jacob P Brady (<a href="mailto:jacob.brady@protonmail.com">jacob.brady@protonmail.com</a>)</p><p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.6)</p><div id="updated">Updated: 2022-12-28 Wed 12:40</div>
 </div>
 </body>
 </html>
